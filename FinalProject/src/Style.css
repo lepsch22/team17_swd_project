@@ -1,0 +1,41 @@
+
+.Logo{
+    -fx-image: url("/fxml/Logo.png");
+}
+.BackGroundGradient{
+    -fx-background-color: linear-gradient(to top left, #63c2c3,#7c62ba);
+}
+.LogInGradient{
+    -fx-background-color: linear-gradient(to top right, #63c2c3,#7c62ba);
+}
+.Sidebar{
+    -fx-background-color: #58D68D;
+}
+.plainButton{
+    -fx-background-color: #E2E2E2;
+    -fx-background-radius: 0;
+    -fx-font-family: Helvetica;
+    -fx-font-size: 18;
+    -fx-min-width: 250px;
+    -fx-pref-width: 250px;
+    -fx-max-width: 250px;
+}
+.greenButton{
+    -fx-background-color: #58D68D;
+    -fx-background-radius: 0;
+    -fx-font-family: Helvetica;
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+    -fx-min-width: 250px;
+    -fx-pref-width: 250px;
+    -fx-max-width: 250px;
+}
+.label{
+    -fx-font-family: Helvetica;
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+}
+.labelCompanyName{
+    -fx-font-family: Helvetica;
+    -fx-font-size: 24;
+}
