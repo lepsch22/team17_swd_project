@@ -13,7 +13,7 @@
     <children>
         <Pane layoutY="-3.0" prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar">
          <children>
-            <ImageView fitHeight="41.0" fitWidth="65.0" layoutX="3.0" layoutY="5.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="41.0" fitWidth="65.0" layoutX="3.0" layoutY="5.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow"/>
          </children></Pane>
         <VBox alignment="CENTER" layoutY="45.0" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient">
             <children>
@@ -22,7 +22,7 @@
                   <Insets bottom="50.0" />
                </VBox.margin>
             </ImageView>
-            <Label fx:id="loginInfoWrong" prefHeight="16.0" prefWidth="195.0" />
+            <Label fx:id="loginInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="243.0" />
             <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Username">
                <padding>
                   <Insets bottom="5.0" />

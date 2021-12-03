@@ -24,6 +24,7 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
+            <Label fx:id="signUpErrorLabel" prefHeight="16.0" prefWidth="337.0" />
                 <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Username">
                     <padding>
                         <Insets bottom="5.0" />
@@ -44,7 +45,7 @@
                </padding>
             </Label>
             <TextField fx:id="passwordSignUpField1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText=" Confirm Password" />
-                <Button fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#loginAction" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Log in">
+                <Button fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#signUpAction" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Sign Up">
                     <VBox.margin>
                         <Insets top="50.0" />
                     </VBox.margin></Button>

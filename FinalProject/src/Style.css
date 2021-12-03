@@ -1,6 +1,6 @@
 
 .Logo{
-    -fx-image: url("/fxml/Logo.png");
+    -fx-image: url("/images/Logo.png");
 }
 .BackGroundGradient{
     -fx-background-color: linear-gradient(to top left, #63c2c3,#7c62ba);
@@ -38,4 +38,7 @@
 .labelCompanyName{
     -fx-font-family: Helvetica;
     -fx-font-size: 24;
+}
+.backArrow{
+    -fx-image: url('/images/BackArrow.png');
 }

@@ -11,8 +11,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Controller{
+    /**
+     * Error signing up
+     */
+    private Label signUpErrorLabel;
     /**
      * Id for signInButton
      */
@@ -49,16 +54,18 @@ public class Controller{
     private  TextField passwordSignUpField1;
 
 
+
     private Stage stage;
     private Scene scene;
-    private Parent root;
+
+    private ArrayList<Scene> sceneVisits;
 
     /**
      * Sign in button on startupscreen, changes the scene to the login scene
      * @param actionEvent event
      * @throws IOException excepetion
      */
-    public void signInAction(ActionEvent actionEvent) throws IOException {
+    public void signInSceneSwitch(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -70,7 +77,7 @@ public class Controller{
      * Sig up button on startup screen, switch scenes to signup scene
      * @param actionEvent event
      */
-    public void signUpAction(ActionEvent actionEvent) throws IOException {
+    public void signUpSceneSwitch(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreen.fxml"));
         stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -85,6 +92,13 @@ public class Controller{
     public void loginAction(ActionEvent actionEvent) {
         String enteredUsername = usernameSignInField.getText();
         String enteredPassword = passwordSignInField.getText();
+
+        //If username/password is wrong.
+        usernameSignInField.setStyle("-fx-border-color: red");
+        passwordSignInField.setStyle("-fx-border-color: red");
+        loginInfoWrong.setStyle("-fx-font-size: 12px");
+        loginInfoWrong.setText("Login info is incorrect.");
+
         /*
         if(usernameData.contains(enteredUsername)){
             //grab associated user password
@@ -94,11 +108,38 @@ public class Controller{
             else{
 
             }
+        else{
+
         }
          */
 
     }
 
+
     public void backArrow(MouseEvent mouseEvent) {
+        System.out.println("Test");
+
+    }
+
+    public void signUpAction(ActionEvent actionEvent) {
+        String username = usernameSignUpField.getText();
+        String password = passwordSignUpField.getText();
+        String password2 = passwordSignUpField1.getText();
+        if(password.length() > 3){
+
+            //PASSWORD MUST BE MORE THAN THREE CHARACTERS
+            if(password.equals(password2)){
+
+                //USER SUCCESSFULLY CREATED ACCOUNT SEND TO SERVER.
+                //SEND TO NEXT SCREEN EMPLOYER or EMPLOYEE
+
+            }
+            else{
+                //PASSWORDS ARE NOT THE SAME
+            }
+        }
+        else{
+            //PASSWORD IS NOT LONG ENOUGH
+        }
     }
 }
