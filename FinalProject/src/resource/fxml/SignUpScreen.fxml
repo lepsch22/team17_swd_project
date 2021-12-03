@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
     <children>
         <Pane layoutY="-3.0" prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" />
         <VBox alignment="CENTER" layoutY="45.0" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient">
@@ -28,7 +28,7 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="signUpErrorLabel" prefHeight="16.0" prefWidth="337.0" />
+            <Label fx:id="signUpErrorLabel" alignment="CENTER" prefHeight="16.0" prefWidth="337.0" />
                 <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Username">
                     <padding>
                         <Insets bottom="5.0" />
