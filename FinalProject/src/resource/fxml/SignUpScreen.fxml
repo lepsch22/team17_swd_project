@@ -2,11 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
@@ -45,6 +49,30 @@
                </padding>
             </Label>
             <TextField fx:id="passwordSignUpField1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText=" Confirm Password" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <children>
+                  <CheckBox fx:id="organizationButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="136.0" text="Organization">
+                     <GridPane.margin>
+                        <Insets left="65.0" />
+                     </GridPane.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="userButton" mnemonicParsing="false" text="User" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="60.0" />
+                     </GridPane.margin>
+                  </CheckBox>
+               </children>
+            </GridPane>
                 <Button fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#signUpAction" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Sign Up">
                     <VBox.margin>
                         <Insets top="50.0" />

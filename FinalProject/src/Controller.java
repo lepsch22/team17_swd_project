@@ -1,3 +1,7 @@
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.IntegerBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -5,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller{
+    public CheckBox userButton;
+    public CheckBox organizationButton;
     /**
      * Error signing up
      */
@@ -55,8 +62,16 @@ public class Controller{
 
 
 
+
     private Stage stage;
     private Scene scene;
+
+    private ObservableSet<CheckBox> selectedBoxes = FXCollections.observableSet();
+    private ObservableSet<CheckBox> unselectedBoxes = FXCollections.observableSet();
+    private IntegerBinding numBoxesSelected = Bindings.size(selectedBoxes);
+    private final int maxBoxSelect = 1;
+
+
 
     private ArrayList<Scene> sceneVisits;
 
@@ -125,9 +140,7 @@ public class Controller{
         String username = usernameSignUpField.getText();
         String password = passwordSignUpField.getText();
         String password2 = passwordSignUpField1.getText();
-        if(password.length() > 3){
-
-            //PASSWORD MUST BE MORE THAN THREE CHARACTERS
+        if(password.length() > 3 && username.length() > 3){
             if(password.equals(password2)){
 
                 //USER SUCCESSFULLY CREATED ACCOUNT SEND TO SERVER.
@@ -142,4 +155,37 @@ public class Controller{
             //PASSWORD IS NOT LONG ENOUGH
         }
     }
+
+    public void setUpBoxes(CheckBox checkBox){
+        if(checkBox.isSelected()){
+            selectedBoxes.add(checkBox);
+        }else {
+            unselectedBoxes.add(checkBox);
+        }
+        checkBox.selectedProperty().addListener((obs, wasSelected, isNowSelected) -> {
+            if (isNowSelected) {
+                unselectedBoxes.remove(checkBox);
+                selectedBoxes.add(checkBox);
+            } else {
+                selectedBoxes.remove(checkBox);
+                unselectedBoxes.add(checkBox);
+            }
+
+        });
+    }
+    @FXML
+    public void initialize(){
+        if(scene.)
+        setUpBoxes(organizationButton);
+        setUpBoxes(userButton);
+        numBoxesSelected.addListener((obs, oldAmount, newAmount) -> {
+            if(newAmount.intValue() >= maxBoxSelect){
+                unselectedBoxes.forEach(cb -> cb.setDisable(true));
+            }
+            else{
+                unselectedBoxes.forEach(cb -> cb.setDisable(false));
+            }
+        });
+    }
+
 }
