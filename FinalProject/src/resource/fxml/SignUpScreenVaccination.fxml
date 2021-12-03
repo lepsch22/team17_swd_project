@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpScreenVaccination">
+    <children>
+        <Pane layoutY="-3.0" prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" />
+        <VBox alignment="CENTER" layoutY="45.0" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient">
+            <children>
+                <ImageView fitHeight="89.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
+                    <VBox.margin>
+                        <Insets bottom="50.0" />
+                    </VBox.margin>
+                </ImageView>
+                <Label fx:id="signUpErrorLabel" alignment="CENTER" prefHeight="16.0" prefWidth="337.0" />
+                <Button fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#signUpAction" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Sign Up">
+                    <VBox.margin>
+                        <Insets top="50.0" />
+                    </VBox.margin></Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
