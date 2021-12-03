@@ -4,9 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.function.UnaryOperator;
 
 public class SignUpController {
     /**
@@ -30,7 +39,7 @@ public class SignUpController {
     @FXML
     private  TextField passwordSignUpField;
     @FXML
-    public Label signUpErrorLabel;
+    private Label signUpErrorLabel;
     /**
      * passwordSignUpField for sign up field
      */
@@ -40,25 +49,37 @@ public class SignUpController {
     private ObservableSet<CheckBox> unselectedBoxes = FXCollections.observableSet();
     private IntegerBinding numBoxesSelected = Bindings.size(selectedBoxes);
     private final int maxBoxSelect = 1;
+    private Stage stage;
+    private Scene scene;
 
-    public void signUpAction(ActionEvent actionEvent) {
+    public void signUpAction(ActionEvent actionEvent) throws IOException {
         String username = usernameSignUpField.getText();
         String password = passwordSignUpField.getText();
         String password2 = passwordSignUpField1.getText();
+        String invalidText = " +=-?().-{}[]~`,<>./*";
         if(password.length() > 3 && username.length() > 3){
-
-            if(password.equals(password2)){//Passwords match and login is longer than 3 chars
-
-                //USER SUCCESSFULLY CREATED ACCOUNT SEND TO SERVER.
-                //SEND TO NEXT SCREEN EMPLOYER or EMPLOYEE
-
+            if(username.contains(invalidText)||password.contains(invalidText)||password2.contains(invalidText))
+            {
+                signUpErrorLabel.setText("Invalid character in Login.");
             }
-            else{//Passwords do not match but are longer than 3 chars
-                signUpErrorLabel.setStyle("-fx-font-size: 12px");
-                signUpErrorLabel.setText("Passwords do not match.");
-                usernameSignUpField.setStyle("-fx-border-color: red");
-                passwordSignUpField.setStyle("-fx-border-color: red");
-                passwordSignUpField1.setStyle("-fx-border-color: red");
+            else {
+                if (password.equals(password2)) {//Passwords match and login is longer than 3 chars
+                    Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreenVaccination.fxml"));
+                    stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
+                    //USER SUCCESSFULLY CREATED ACCOUNT SEND TO SERVER.
+                    //SEND TO NEXT SCREEN EMPLOYER or EMPLOYEE
+
+                } else {//Passwords do not match but are longer than 3 chars
+                    signUpErrorLabel.setStyle("-fx-font-size: 12px");
+                    signUpErrorLabel.setText("Passwords do not match.");
+                    usernameSignUpField.setStyle("-fx-border-color: red");
+                    passwordSignUpField.setStyle("-fx-border-color: red");
+                    passwordSignUpField1.setStyle("-fx-border-color: red");
+                }
             }
         }
         else{
@@ -99,6 +120,27 @@ public class SignUpController {
                 unselectedBoxes.forEach(cb -> cb.setDisable(false));
             }
         });
+    /*
+        UnaryOperator<TextFormatter.Change> numberValidationFormatter = change -> {
+            if (change.getText().matches("\\d+")) {
+                return change; //if change is a number
+            } else {
+                change.setText(""); //else make no change
+                change.setRange( //don't remove any selected text either.
+                        change.getRangeStart(),
+                        change.getRangeStart()
+                );
+                return change;
+            }
+        };
+
+
+        TextFormatter tf = new TextFormatter(numberValidationFormatter);
+
+
+        usernameSignUpField.setTextFormatter(tf);
+
+     */
 
     }
 }
