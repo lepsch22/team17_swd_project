@@ -55,29 +55,39 @@ public class LoginController {
 
 
 
-        if (Database.checkPassword(enteredUsername,enteredPassword))
-        {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
-            Parent root = loader.load();
-            UserScreenController controller = loader.getController();
-
-            HashMap<String,String> map=new HashMap<>();
-
-            ResultSet rs=Database.returnUserInfo(enteredUsername);
+        if (Database.checkPassword(enteredUsername,enteredPassword)) {
+            ResultSet rs = Database.returnUserInfo(enteredUsername);
             rs.next();
-            if (rs.getString("LoginType").equals("User"))
-            {
+            if (rs.getString("LoginType").equals("User")) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
+                Parent root = loader.load();
+                UserScreenController controller = loader.getController();
+
+                HashMap<String, String> map = new HashMap<>();
+
+
                 System.out.println(enteredUsername);
-                map.put("UserName",enteredUsername);
-                map.put("FirstName",rs.getString("FirstName"));
-                map.put("LastName",rs.getString("LastName"));
-                map.put("Status",rs.getString("Status"));
-            }
+                map.put("UserName", enteredUsername);
+                map.put("FirstName", rs.getString("FirstName"));
+                map.put("LastName", rs.getString("LastName"));
+                map.put("Status", rs.getString("Status"));
+
             controller.setInfo(map);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            }
+
+        else if(rs.getString("LoginType").equals("Org"))
+        {
+
+        }
+
+            else if(rs.getString("LoginType").equals("Admin"))
+            {
+
+            }
         }
         else
         {

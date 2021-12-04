@@ -104,14 +104,14 @@ public class UserScreenController {
                 if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
                     if(mouseEvent.getClickCount() == 2){
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationInformation.fxml"));
-                        Parent root = null;
+                        Parent root=null ;
                         try {
-                            root = loader.load();
+                             root = loader.load();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                         OrganizationInfoController controller = loader.getController();
-
+                        controller.setInfo((String) listOfCompanies.getSelectionModel().getSelectedItem());
 
                         //PASS IN THE NAME AND REQUIREMENTS
 
