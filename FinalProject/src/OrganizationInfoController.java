@@ -21,7 +21,7 @@ public class OrganizationInfoController {
 
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/UserScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -29,8 +29,10 @@ public class OrganizationInfoController {
     }
     @FXML
     public void initialize(){
+
+        String yourmom = "Heldsf dsf ert erg rsgte ry  ery 54y fdg ertrt4 gewdsg er6y regds grt vdsv rtu ftdv dfhyt hbcv tyj tygfv rtyj uyjnbg fbn uikh jhbf jiu kghf bnytu loiuhhng bfj";
         orgName.setText(nameOfOrg);
-        requirementTextArea.setText(requirementText);
+        requirementTextArea.appendText(yourmom);
 
     }
 

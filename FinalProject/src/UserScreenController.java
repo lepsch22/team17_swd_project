@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -20,11 +21,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class UserScreenController {
-    public Label firstNameLastName1;
-
-    public Label vaccinated;
-    public TextField orgNameSearch;
-    public ListView listOfCompanies;
+    @FXML
+    private Label firstNameLastName1;
+    @FXML
+    private Label vaccinated;
+    @FXML
+    private TextField orgNameSearch;
+    @FXML
+    private ListView listOfCompanies;
+    @FXML
+    private ScrollPane scroll;
+    @FXML
     private String username;
 
     public void setInfo(String info){
@@ -61,8 +68,16 @@ public class UserScreenController {
 
     @FXML
     public void initialize(){
+        /*
+        scroll.prefWidthProperty().bind(listOfCompanies.widthProperty());
+        scroll.prefHeightProperty().bind(listOfCompanies.heightProperty());
+        scroll.setContent(listOfCompanies);
+        scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
-        for (int i = 0; i < 20; i++) { //List of all orgs
+         */
+
+
+        for (int i = 0; i < 1000; i++) { //List of all orgs
             listOfCompanies.getItems().add("Company"+i);
         }
         //SET FIRST NAME AND LAST NAME

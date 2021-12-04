@@ -1,0 +1,2 @@
+public class OrganizationScreenController {
+}
