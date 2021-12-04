@@ -19,6 +19,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 
@@ -71,7 +73,7 @@ public class SignUpController {
         }
         return isGood;
     }
-    public void signUpAction(ActionEvent actionEvent) throws IOException {
+    public void signUpAction(ActionEvent actionEvent) throws IOException, SQLException, NoSuchAlgorithmException {
         String username = usernameSignUpField.getText();
         String password = passwordSignUpField.getText();
         String password2 = passwordSignUpField1.getText();
@@ -92,38 +94,42 @@ public class SignUpController {
                     if (organizationButton.isSelected()) {
 
                         //If username unique doo this
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenOrg.fxml"));
-                        Parent root = loader.load();
-                        SignUpScreenOrgController scene2Controller = loader.getController();
+                        if (Database.isUniqueUser(username)) {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenOrg.fxml"));
+                            Parent root = loader.load();
+                            SignUpScreenOrgController scene2Controller = loader.getController();
 
-                        ArrayList<String> list =  new ArrayList<>();
-                        list.add(username);
-                        list.add(password);
+                            ArrayList<String> list = new ArrayList<>();
+                            list.add(username);
+                            list.add(password);
 
-                        scene2Controller.setInfo(list);
+                            scene2Controller.setInfo(list);
 
-                        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
+                            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
+                        }
                         //End this
 
                     } else if (userButton.isSelected()) {
                         //If username unique doo this
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenUser.fxml"));
-                        Parent root = loader.load();
-                        SignUpScreenUserController scene2Controller = loader.getController();
+                        if (Database.isUniqueUser(username)) {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenUser.fxml"));
+                            Parent root = loader.load();
+                            SignUpScreenUserController scene2Controller = loader.getController();
 
-                        ArrayList<String> list =  new ArrayList<>();
-                        list.add(username);
-                        list.add(password);
+                            ArrayList<String> list = new ArrayList<>();
+                            list.add(username);
+                            list.add(password);
 
-                        scene2Controller.setInfo(list);
+                            scene2Controller.setInfo(list);
 
-                        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
+                            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
+                        }
                         //End this
                     }
 
@@ -175,9 +181,6 @@ public class SignUpController {
                 unselectedBoxes.forEach(cb -> cb.setDisable(false));
             }
         });
-
-
-
     }
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {

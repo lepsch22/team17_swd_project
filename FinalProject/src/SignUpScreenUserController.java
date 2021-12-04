@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SignUpScreenUserController {
@@ -38,7 +40,7 @@ public class SignUpScreenUserController {
         stage.show();
     }
 
-    public void signUp(ActionEvent actionEvent) {
+    public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
         System.out.println(username);
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
@@ -55,8 +57,7 @@ public class SignUpScreenUserController {
         }
         if(isGood){
             //CREATE ACCOUNT
-            //nameInfoWrong.setText("POGGERS");
-
+            Database.insertUser(username,password,firstName,lastName);
         }else{
             nameInfoWrong.setText("Only alphabetical characters are allowed.");
         }

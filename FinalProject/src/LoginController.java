@@ -11,7 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 public class LoginController {
     /**
@@ -44,16 +45,7 @@ public class LoginController {
      * log in button on Log in screen
      * @param actionEvent button
      */
-    public void loginAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
-        Parent root = loader.load();
-        UserScreenController controller = loader.getController();
-
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+    public void loginAction(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
         String enteredUsername = usernameSignInField.getText();
         String enteredPassword = passwordSignInField.getText();
 
@@ -61,9 +53,15 @@ public class LoginController {
         usernameSignInField.setStyle("-fx-border-color: red");
         passwordSignInField.setStyle("-fx-border-color: red");
         loginInfoWrong.setStyle("-fx-font-size: 12px");
-        loginInfoWrong.setText("Login info is incorrect.");
 
-
+        if (Database.checkPassword(enteredUsername,enteredPassword))
+        {
+            //WRITE NEXT PAGE CODE HERE
+        }
+        else
+        {
+            loginInfoWrong.setText("Login info is incorrect.");
+        }
 
     }
 
