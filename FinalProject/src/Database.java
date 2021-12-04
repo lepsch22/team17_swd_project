@@ -242,6 +242,16 @@ public class Database {
         return rs;
     }
 
+    public static ResultSet getRegulation(String name) throws SQLException, NoSuchAlgorithmException {
+        final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
+        // Change query
+        Connection connection = DriverManager.getConnection(
+                DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
+        Statement statement = connection.createStatement();
+        ResultSet rs=statement.executeQuery("SELECT * From Organizations Where OrgName = '"+name+"'");
+        return rs;
+    }
+
 
 }
 

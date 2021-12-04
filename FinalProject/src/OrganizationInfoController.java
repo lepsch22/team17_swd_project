@@ -11,6 +11,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 
 public class OrganizationInfoController {
@@ -33,9 +36,10 @@ public class OrganizationInfoController {
         stage.show();
     }
     @FXML
-    public void initialize(){
-        String yourmom = "Heldsf dsf ert erg rsgte ry  ery 54y fdg ertrt4 gewdsg er6y regds grt vdsv rtu ftdv dfhyt hbcv tyj tygfv rtyj uyjnbg fbn uikh jhbf jiu kghf bnytu loiuhhng bfj";
-        requirementTextArea.appendText(yourmom);
+    public void initialize() throws SQLException, NoSuchAlgorithmException {
+        ResultSet rs = Database.getRegulation(orgName.getText());
+        rs.next();
+        requirementTextArea.appendText(rs.getString("OrgName"));
 
     }
 
