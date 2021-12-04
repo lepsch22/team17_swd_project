@@ -24,13 +24,16 @@
                         <Insets bottom="15.0" left="25.0" right="25.0" />
                     </VBox.margin>
                <content>
-                  <TextArea prefHeight="446.0" prefWidth="313.0" />
+                  <TextArea fx:id="requirementTextArea" prefHeight="446.0" prefWidth="313.0" />
                </content>
                 </ScrollPane>
             </children>
         </VBox>
     </center>
     <top>
-        <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER" />
+        <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER" >
+        <children>
+            <ImageView fitHeight="44.0" fitWidth="64.0" layoutY="2.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow" />
+        </children></Pane>
     </top>
 </BorderPane>
