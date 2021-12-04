@@ -57,8 +57,7 @@ public class LoginController {
 
         if (Database.checkPassword(enteredUsername,enteredPassword)) {
             ResultSet rs = Database.returnUserInfo(enteredUsername);
-            try {
-                rs.next();
+            rs.next();
 
 
             if (rs.getString("LoginType").equals("User")) {
@@ -89,23 +88,23 @@ public class LoginController {
 
                 HashMap<String, String> map = new HashMap<>();
 
-               // map.put()
+               map.put("OrgName",rs.getString("OrgName"));
+               map.put("Regulations",rs.getString("Regulations"));
 
-               // controller.setInfo(map);
+                controller.setInfo(map);
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
 
             }
-
-            else if(rs.getString("LoginType").equals("Admin"))
+            else
             {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HealthCareScreen.fxml"));
                 Parent root = loader.load();
+                System.out.println("Here");
                 HealthCareScreenController controller = loader.getController();
 
-                HashMap<String, String> map = new HashMap<>();
 
                 // map.put()
 
@@ -114,16 +113,8 @@ public class LoginController {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-
             }
-        }
-        catch (NullPointerException e)
-        {
-            loginInfoWrong.setText("Check your syntax");
-            usernameSignInField.setStyle("-fx-border-color: red");
-            passwordSignInField.setStyle("-fx-border-color: red");
-            loginInfoWrong.setStyle("-fx-font-size: 12px");
-        }
+
         }
         else
         {
