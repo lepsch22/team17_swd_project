@@ -15,7 +15,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserScreenController {
     public Label firstNameLastName1;
@@ -25,8 +29,17 @@ public class UserScreenController {
     public ListView listOfCompanies;
     private String username;
 
-    public void setInfo(String info){
-        username = info;
+    public void setInfo(HashMap<String,String> info){
+        username = info.get("UserName");
+        firstNameLastName1.setText(info.get("FirstName")+" "+info.get("LastName"));
+        if (info.get("Status").equals("FALSE"))
+        {
+            vaccinated.setText("Status: Not Vaccinated");
+        }
+        else
+        {
+            vaccinated.setText("Status: Vaccinated");
+        }
     }
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {
@@ -46,15 +59,19 @@ public class UserScreenController {
     }
 
     @FXML
-    public void initialize(){
-
-        for (int i = 0; i < 20; i++) { //List of all orgs
-            listOfCompanies.getItems().add("Company"+i);
+    public void initialize() throws SQLException, NoSuchAlgorithmException {
+        ResultSet rs=Database.getDatabaseNames();
+        Integer orgCount=Database.count("Organizations");
+        for (int i = 0; i < orgCount; i++) { //List of all orgs
+            if (rs.next())
+            {
+                listOfCompanies.getItems().add(rs.getString("OrgName"));
+            }
         }
         //SET FIRST NAME AND LAST NAME
-        firstNameLastName1.setText("FIRST NAME HERE" +" "+"LAST NAME HERE");
+
+
         //SET Vaccine status
-        vaccinated.setText("Vaccinated");
 
         if (vaccinated.getText().equals("Vaccinated")){
             vaccinated.setStyle(

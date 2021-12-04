@@ -12,7 +12,6 @@ public class Driver extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-
        // Database.checkPassword("Organizations","4","ewr");
        // Database.delete("Users");
         //Database.delete("Organizations");
@@ -20,8 +19,16 @@ public class Driver extends Application {
 
         //
         // Database.insertHealtCare("benyboo","abcde");
-//        Database.insertOrg("1","abcdvdfsdaadf","hello","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
-  // Database.insertOrg("4","ewr","there","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
+//       Database.insertOrg("first","1234","McDonalds");
+//        Database.insertOrg("second","1234","BurgerKing");
+//        Database.insertOrg("third","1234","Starbucks");
+//        Database.insertOrg("fourth","1234","Steak n Shake");
+//        Database.insertOrg("fifth","1234","Culvers");
+//        Database.insertOrg("sixth","1234","Airport");
+//        Database.insertOrg("seventh","1234","Iowa");
+//        Database.insertOrg("eigth","1234","One Piece");
+
+        // Database.insertOrg("4","ewr","there","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
 //        Database.insertOrg("3","abcdvdfdffsdaadf","bye","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
 //        Database.insertOrg("22","3","test","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
 //        Database.insertOrg("21","abc23dvdfsdaadf","this","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");

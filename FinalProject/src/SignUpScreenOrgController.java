@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -40,6 +41,7 @@ public class SignUpScreenOrgController {
         String companyNameIn = companyName.getText();
 
         Boolean isGood = true;
+
         for(int i = 0; i < companyNameIn.length(); i++) {
             if (!Character.isLetter(companyNameIn.charAt(i))){
                 isGood = false;

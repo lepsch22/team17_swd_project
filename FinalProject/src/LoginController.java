@@ -12,8 +12,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoginController {
     /**
@@ -59,11 +61,19 @@ public class LoginController {
             Parent root = loader.load();
             UserScreenController controller = loader.getController();
 
-            ArrayList<String> list = new ArrayList<>();
-            list.add(usernameSignInField.getText());
+            HashMap<String,String> map=new HashMap<>();
 
-            controller.setInfo(usernameSignInField.getText());
-
+            ResultSet rs=Database.returnUserInfo(enteredUsername);
+            rs.next();
+            if (rs.getString("LoginType").equals("User"))
+            {
+                System.out.println(enteredUsername);
+                map.put("UserName",enteredUsername);
+                map.put("FirstName",rs.getString("FirstName"));
+                map.put("LastName",rs.getString("LastName"));
+                map.put("Status",rs.getString("Status"));
+            }
+            controller.setInfo(map);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

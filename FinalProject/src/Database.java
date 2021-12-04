@@ -24,6 +24,7 @@ public class Database {
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
+        System.out.println("INSERT INTO  Organizations (UserName,Password,OrgName) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+name+"')");
         statement.executeUpdate("INSERT INTO  Organizations (UserName,Password,OrgName) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+name+"')");
     }
     public static void insertHealtCare( String user,String pwd) throws SQLException, NoSuchAlgorithmException {
@@ -57,7 +58,7 @@ public class Database {
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
-        statement.executeUpdate("UPDATE Users SET Status = TRUE WHERE  UserName= '"+user+"'");
+        statement.executeUpdate("UPDATE Users SET Status = 'Vaccinated' WHERE  UserName= '"+user+"'");
     }
 
     public static boolean checkPassword(String username,String pwd ) throws SQLException, NoSuchAlgorithmException {
@@ -129,6 +130,41 @@ public class Database {
             }
         }
         return true;
+    }
+
+    public static ResultSet returnUserInfo(String username) throws SQLException, NoSuchAlgorithmException {
+        final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
+        // Change query
+        System.out.println("");
+        Connection connection = DriverManager.getConnection(
+                DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
+        Statement statement = connection.createStatement();
+        ResultSet rs=statement.executeQuery("SELECT FirstName,LastName,Status,LoginType " +
+                                               "FROM Users Where UserName='"+username+"'");
+        return rs;
+    }
+
+    public static ResultSet getDatabaseNames() throws SQLException, NoSuchAlgorithmException {
+        final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
+        // Change query
+        System.out.println("");
+        Connection connection = DriverManager.getConnection(
+                DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
+        Statement statement = connection.createStatement();
+        ResultSet rs=statement.executeQuery("SELECT OrgName From Organizations");
+        return rs;
+    }
+
+    public static int count(String Table) throws SQLException, NoSuchAlgorithmException {
+        final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
+        // Change query
+        Connection connection = DriverManager.getConnection(
+                DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
+        Statement statement = connection.createStatement();
+        System.out.println("SELECT Count(OrgName) counter From "+Table);
+        ResultSet rs=statement.executeQuery("SELECT Count(OrgName) counter From "+Table);
+        rs.next();
+        return Integer.valueOf(rs.getString("counter"));
     }
 }
 
