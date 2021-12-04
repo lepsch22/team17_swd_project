@@ -12,16 +12,17 @@ public class Driver extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        Database.delete("Users");
-        Database.delete("Organizations");
-        Database.delete("JBCovidSolutions");
+
+       // Database.delete("Users");
+        //Database.delete("Organizations");
+       // Database.delete("JBCovidSolutions");
 
         //
         // Database.insertHealtCare("benyboo","abcde");
-        //Database.insertOrg("kser","abcd","AMERICANEAGLE","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
+        Database.insertOrg("kser","abcd","AMERICANEAGLE","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
         //Database.changeStatus("Users","test12");
         // Database.delete("Users");
-        //Database.insertUser("test12","abc","test","mctesterson");
+        Database.insertUser("test12","abc","test","mctesterson");
         //Database.changeStatus("test12");
         Parent root = FXMLLoader.load((getClass().getResource("resource/fxml/StartUpScreen.fxml")));
         Scene scene = new Scene(root);
