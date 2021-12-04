@@ -90,6 +90,8 @@ public class SignUpController {
             else {
                 if (password.equals(password2)) {//Passwords match and login is longer than 3 chars
                     if (organizationButton.isSelected()) {
+
+                        //If username unique doo this
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenOrg.fxml"));
                         Parent root = loader.load();
                         SignUpScreenOrgController scene2Controller = loader.getController();
@@ -104,12 +106,10 @@ public class SignUpController {
                         scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
+                        //End this
 
-                        //GO TO ORG SCENE
-                        //SET ACCOUNT TYPE TO ORG
                     } else if (userButton.isSelected()) {
-                        //NEXT STAGE TO USER SCREEN
-                        //SET TYPE TO USER
+                        //If username unique doo this
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenUser.fxml"));
                         Parent root = loader.load();
                         SignUpScreenUserController scene2Controller = loader.getController();
@@ -124,6 +124,7 @@ public class SignUpController {
                         scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
+                        //End this
                     }
 
                 } else {//Passwords do not match but are longer than 3 chars
@@ -138,7 +139,7 @@ public class SignUpController {
         else{
             //PASSWORD IS NOT LONG ENOUGH
             signUpErrorLabel.setStyle("-fx-font-size: 12px");
-            signUpErrorLabel.setText("Login credentials must be at least 3 characters.");
+            signUpErrorLabel.setText("Login credentials must be more than 3 characters.");
             usernameSignUpField.setStyle("-fx-border-color: red");
             passwordSignUpField.setStyle("-fx-border-color: red");
             passwordSignUpField1.setStyle("-fx-border-color: red");

@@ -53,19 +53,7 @@ public class LoginController {
         loginInfoWrong.setStyle("-fx-font-size: 12px");
         loginInfoWrong.setText("Login info is incorrect.");
 
-        /*
-        if(usernameData.contains(enteredUsername)){
-            //grab associated user password
-            if(enteredPassword.equals(userPassword)){
-                //GOT TO THE NEXT SCENE based on if employer or employee
-            }
-            else{
 
-            }
-        else{
-
-        }
-         */
 
     }
 
