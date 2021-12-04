@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SignUpScreenOrgController {
@@ -33,7 +35,7 @@ public class SignUpScreenOrgController {
         stage.show();
     }
 
-    public void signUp(ActionEvent actionEvent) {
+    public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
         System.out.println(username);
         String companyNameIn = companyName.getText();
 
@@ -46,6 +48,14 @@ public class SignUpScreenOrgController {
 
         if(isGood){
             //CREATE COMPANY
+            if (Database.isUniqueOrg(companyNameIn))
+            {
+                Database.insertOrg(username,password,companyNameIn);
+            }
+            else
+            {
+                nameInfoWrong.setText("This name is already taken");
+            }
         }else{
             nameInfoWrong.setText("Only alphabetical characters are allowed.");
         }
