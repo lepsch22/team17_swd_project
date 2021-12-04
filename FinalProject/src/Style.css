@@ -20,6 +20,15 @@
     -fx-pref-width: 250px;
     -fx-max-width: 250px;
 }
+.plainSmallButton{
+    -fx-background-color: #E2E2E2;
+    -fx-background-radius: 0;
+    -fx-font-family: Helvetica;
+    -fx-font-size: 14;
+    -fx-min-width: 100px;
+    -fx-pref-width: 100px;
+    -fx-max-width: 100px;
+}
 .greenButton{
     -fx-background-color: #58D68D;
     -fx-background-radius: 0;
