@@ -101,6 +101,19 @@ public class LoginController {
 
             else if(rs.getString("LoginType").equals("Admin"))
             {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HealthCareScreen.fxml"));
+                Parent root = loader.load();
+                HealthCareScreenController controller = loader.getController();
+
+                HashMap<String, String> map = new HashMap<>();
+
+                // map.put()
+
+                // controller.setInfo(map);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
 
             }
         }

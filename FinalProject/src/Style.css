@@ -64,3 +64,8 @@
     overflow: auto;
     -fx-wrap-text: true;
 }
+.label{
+    -fx-font-family: Helvetica;
+    -fx-font-size: 18;
+    -fx-text-fill: white;
+}
