@@ -14,19 +14,19 @@ public class Driver extends Application {
     public void start(Stage stage) throws Exception {
        // Database.checkPassword("Organizations","4","ewr");
        // Database.delete("Users");
-        //Database.delete("Organizations");
+       // Database.delete("Organizations");
        // Database.delete("JBCovidSolutions");
 
         //
         // Database.insertHealtCare("Joslin","abcd");
-//      Database.insertOrg("first","1234","McDonalds");
-//        Database.insertOrg("second","1234","BurgerKing");
-//        Database.insertOrg("third","1234","Starbucks");
-//        Database.insertOrg("fourth","1234","Steak n Shake");
-//        Database.insertOrg("fifth","1234","Culvers");
-//        Database.insertOrg("sixth","1234","Airport");
-//        Database.insertOrg("seventh","1234","Iowa");
-//        Database.insertOrg("eigth","1234","One Piece");
+//        Database.insertOrg("first11","1234","McDonalds");
+//        Database.insertOrg("second2","1234","BurgerKing");
+//        Database.insertOrg("thir123d","1234","Starbucks");
+//        Database.insertOrg("fourt21h","1234","Steak n Shake");
+//        Database.insertOrg("fift2h","1234","Culvers");
+//        Database.insertOrg("sixt1h","1234","Airport");
+//        Database.insertOrg("seve312nth","1234","Iowa");
+//        Database.insertOrg("eig2131th","1234","One Piece");
 
         // Database.insertOrg("4","ewr","there","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");
 //        Database.insertOrg("3","abcdvdfdffsdaadf","bye","sdkjfbgkajhfkjshbnasjkhvfbdkasjgrejknbufkdsajbfjkldshfbkdsjlgfjkaslbkjasdbnfdlkasn.fbdsajkmnflds");

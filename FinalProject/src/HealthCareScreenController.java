@@ -23,16 +23,42 @@ public class HealthCareScreenController {
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
         //HI joslin I am your friend
+        workerFirstAndLastLabel.setText("Admin Acess");
+       // workerFirstAndLastLabel.set
+
         String message="";
         ResultSet rs= Database.getAll("Users");
 
+        message+=String.format("%20s %25s %25s %25s", "Username", "First Name", "Last Name", "Status")+"\n";
+        //        "UserName    FirstName    LastName     Status\n";
         while (rs.next())
         {
-            message+=rs.getString("UserName")+" "+rs.getString("FirstName")+" "+rs.getString("LastName"
-            )+" "+rs.getString("Status")+"\n";
-
+            message+=String.format("%20s %30s %25s %30s",rs.getString("UserName"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("LoginType"))+"\n";
+                /*    "     "+rs.getString("UserName")+"          "+rs.getString("FirstName")+"       "+rs.getString("LastName"
+            )+"       "+rs.getString("Status")+"\n";*/
         }
         userInformationTextArea.setText(message);
+
+        message="";
+        rs= Database.getAll("Organizations");
+
+        message+=String.format("%10s %20s %20s %40s", "Username", "Name", "Status", "Regulations")+"\n";
+        //        "UserName    FirstName    LastName     Status\n";
+        while (rs.next())
+        {
+            try
+            {
+                rs.getString("Regulations");
+                message+=String.format("%10s %20s %20s %40s",rs.getString("UserName"),rs.getString("OrgName"),rs.getString("LoginType"),rs.getString("Regulations"))+"\n";
+            }
+            catch (NullPointerException e)
+            {
+                message+=String.format("%10s %20s %20s %40s",rs.getString("UserName"),rs.getString("OrgName"),rs.getString("LoginType"),rs.getString("regulations"))+"\n";
+            }
+                /*    "     "+rs.getString("UserName")+"          "+rs.getString("FirstName")+"       "+rs.getString("LastName"
+            )+"       "+rs.getString("Status")+"\n";*/
+        }
+        companyInformationTextArea.setText(message);
     }
 
     public void backArrow(MouseEvent mouseEvent) {
