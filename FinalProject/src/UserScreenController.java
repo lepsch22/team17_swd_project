@@ -120,12 +120,10 @@ public class UserScreenController {
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
-                        System.out.println("Double clicked");
                     }
                 }
             }
         });
-
 
     }
 }

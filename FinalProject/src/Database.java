@@ -42,7 +42,6 @@ public class Database {
          {
              final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
              // Change query
-             System.out.println("");
              Connection connection = DriverManager.getConnection(
                      DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
              Statement statement = connection.createStatement();
@@ -54,7 +53,6 @@ public class Database {
     public static void changeStatus( String user) throws SQLException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
-        System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
@@ -64,7 +62,6 @@ public class Database {
     public static boolean checkPassword(String username,String pwd ) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
-        System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
@@ -86,7 +83,6 @@ public class Database {
     public static boolean isUniqueUser(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
-        System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
@@ -116,7 +112,6 @@ public class Database {
     public static boolean isUniqueOrg(String Org) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
-        System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
@@ -135,7 +130,6 @@ public class Database {
     public static ResultSet returnUserInfo(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
-        System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
@@ -147,7 +141,6 @@ public class Database {
     public static ResultSet getDatabaseNames() throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
-        System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
@@ -161,7 +154,6 @@ public class Database {
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
-        System.out.println("SELECT Count(OrgName) counter From "+Table);
         ResultSet rs=statement.executeQuery("SELECT Count(OrgName) counter From "+Table);
         rs.next();
         return Integer.valueOf(rs.getString("counter"));

@@ -66,7 +66,6 @@ public class LoginController {
                 HashMap<String, String> map = new HashMap<>();
 
 
-                System.out.println(enteredUsername);
                 map.put("UserName", enteredUsername);
                 map.put("FirstName", rs.getString("FirstName"));
                 map.put("LastName", rs.getString("LastName"));

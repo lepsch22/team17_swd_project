@@ -20,9 +20,9 @@ public class OrganizationInfoController {
     private String nameOfOrg;
     private String requirementText;
 
+
     public void setInfo(String nameOfOrg ){
-        this.nameOfOrg=nameOfOrg;
-        System.out.println("dsfdsedfsewd "+nameOfOrg);
+        orgName.setText(nameOfOrg);
     }
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {
@@ -34,9 +34,7 @@ public class OrganizationInfoController {
     }
     @FXML
     public void initialize(){
-        System.out.println("heeeeereeee "+nameOfOrg);
         String yourmom = "Heldsf dsf ert erg rsgte ry  ery 54y fdg ertrt4 gewdsg er6y regds grt vdsv rtu ftdv dfhyt hbcv tyj tygfv rtyj uyjnbg fbn uikh jhbf jiu kghf bnytu loiuhhng bfj";
-        orgName.setText(nameOfOrg);
         requirementTextArea.appendText(yourmom);
 
     }
