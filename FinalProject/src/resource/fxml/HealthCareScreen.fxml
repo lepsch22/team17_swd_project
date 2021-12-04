@@ -73,12 +73,12 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <TextArea fx:id="userInformationTextArea" prefHeight="200.0" prefWidth="200.0" styleClass="textArea">
+                  <TextArea fx:id="userInformationTextArea" prefHeight="200.0" prefWidth="200.0" >
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <TextArea fx:id="companyInformationTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" styleClass="textArea">
+                  <TextArea fx:id="companyInformationTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" >
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" />
                      </GridPane.margin>
