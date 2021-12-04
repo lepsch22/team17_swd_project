@@ -182,6 +182,11 @@ public class Database {
              rs=statement.executeQuery("SELECT OrgName,Regulations,LoginType " +
                     "FROM Organizations Where UserName='"+username+"'");
         }
+        else
+        {
+            rs=statement.executeQuery("SELECT UserName,LoginType " +
+                    "FROM JBCovidSolutions Where UserName='"+username+"'");        }
+
 
         return rs;
     }

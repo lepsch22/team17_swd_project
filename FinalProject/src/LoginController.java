@@ -57,7 +57,6 @@ public class LoginController {
 
         if (Database.checkPassword(enteredUsername,enteredPassword)) {
             ResultSet rs = Database.returnUserInfo(enteredUsername);
-
             rs.next();
 
 
@@ -99,14 +98,13 @@ public class LoginController {
                 stage.show();
 
             }
-
-            else if(rs.getString("LoginType").equals("Admin"))
+            else
             {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HealthCareScreen.fxml"));
                 Parent root = loader.load();
+                System.out.println("Here");
                 HealthCareScreenController controller = loader.getController();
 
-                HashMap<String, String> map = new HashMap<>();
 
                 // map.put()
 
@@ -115,7 +113,6 @@ public class LoginController {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-
             }
 
         }
