@@ -11,6 +11,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 public class OrganizationScreenController {
     public Label orgName;
@@ -24,18 +27,20 @@ public class OrganizationScreenController {
         stage.setScene(scene);
         stage.show();
     }
+    public void setInfo(HashMap<String,String> info){
+       orgName.setText(info.get("OrgName"));
+       requirementsField.setText(info.get("Regulations"));
+    }
 
     public void addImage(ActionEvent actionEvent) {
     }
 
-    public void submitRequirements(ActionEvent actionEvent) {
+    public void submitRequirements(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
         String requirements = requirementsField.getText();
-        requirementsField.setText("sdfffffffksjhfhgkrjehgkrjehgjkrdhgjerg");
-        //Send requirements to database
+        Database.addRegulation(requirements,orgName.getText());
+
     }
     @FXML
     public void initialize(){
-        requirementsField.setText("sdfdsfdsfsdfdsfdsfdsfds");
-
     }
 }

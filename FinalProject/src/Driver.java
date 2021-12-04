@@ -18,8 +18,8 @@ public class Driver extends Application {
        // Database.delete("JBCovidSolutions");
 
         //
-        // Database.insertHealtCare("benyboo","abcde");
-//       Database.insertOrg("first","1234","McDonalds");
+        // Database.insertHealtCare("Joslin","abcd");
+//      Database.insertOrg("first","1234","McDonalds");
 //        Database.insertOrg("second","1234","BurgerKing");
 //        Database.insertOrg("third","1234","Starbucks");
 //        Database.insertOrg("fourth","1234","Steak n Shake");
@@ -38,7 +38,7 @@ public class Driver extends Application {
         // Database.delete("Users");
         //Database.insertUser("2","abcsdf","test22","mctesterson");
         //Database.changeStatus("test12");
-        Parent root = FXMLLoader.load((getClass().getResource("resource/fxml/StartUpScreen.fxml")));
+       Parent root = FXMLLoader.load((getClass().getResource("resource/fxml/StartUpScreen.fxml")));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
