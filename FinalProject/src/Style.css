@@ -42,3 +42,16 @@
 .backArrow{
     -fx-image: url('/images/BackArrow.png');
 }
+.textArea
+{
+    border: 1px solid #b5bcc7;
+    height: 380px;
+    background-color: #F7FCFF;
+    color: Gray;
+    margin-top: 1px;
+    margin-left: 4px;
+    margin-right: 1px;
+    padding: 2px;
+    overflow: auto;
+    -fx-wrap-text: true;
+}

@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -35,14 +34,10 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </TextField>
-            <ScrollPane prefHeight="333.0" prefWidth="260.0">
-               <content>
-                  <ListView fx:id="listOfCompanies" prefHeight="373.0" prefWidth="329.0" />
-               </content>
+            <ListView fx:id="listOfCompanies" prefHeight="356.0" prefWidth="360.0">
                <VBox.margin>
-                  <Insets bottom="15.0" left="25.0" right="25.0" />
-               </VBox.margin>
-            </ScrollPane>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin></ListView>
             </children>
         </VBox>
     </center>
