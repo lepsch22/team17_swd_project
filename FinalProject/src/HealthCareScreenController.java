@@ -16,9 +16,11 @@ public class HealthCareScreenController {
     public TextArea userInformationTextArea;
     public TextArea companyInformationTextArea;
 
-    public void submitVaccination(ActionEvent actionEvent) {
+    public void submitVaccination(ActionEvent actionEvent) throws SQLException {
         String username = usernameField.getText();
         //Change vaccination
+        Database.changeStatus(username);
+        usernameField.setText("");
     }
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {

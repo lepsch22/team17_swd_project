@@ -37,10 +37,16 @@ public class UserScreenController {
         if (info.get("Status").equals("FALSE"))
         {
             vaccinated.setText("Status: Not Vaccinated");
+            vaccinated.setStyle(
+                    "-fx-text-fill: red"
+            );
         }
         else
         {
             vaccinated.setText("Status: Vaccinated");
+            vaccinated.setStyle(
+                    "-fx-text-fill: #58D68D"
+            );
         }
     }
 
@@ -85,18 +91,7 @@ public class UserScreenController {
         //SET FIRST NAME AND LAST NAME
 
 
-        //SET Vaccine status
 
-        if (vaccinated.getText().equals("Vaccinated")){
-            vaccinated.setStyle(
-                    "-fx-text-fill: #58D68D"
-            );
-        }
-        else if(vaccinated.getText().equals("Not Vaccinated")){
-            vaccinated.setStyle(
-                    "-fx-text-fill: red"
-            );
-        }
 
         listOfCompanies.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
