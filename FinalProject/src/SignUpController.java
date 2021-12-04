@@ -1,5 +1,7 @@
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
@@ -52,27 +54,55 @@ public class SignUpController {
     private final int maxBoxSelect = 1;
     private Stage stage;
     private Scene scene;
-
+    private CheckBox selectedBox;
+    public boolean validChars(String string){
+        String invalidText = " "+"+=-?().-{}[]~`,<>./*%"+'"'+"'";
+        boolean isGood = true;
+        for(int i = 0; i < string.length(); i++) {
+            if (invalidText.contains(String.valueOf(string.charAt(i)))){
+                System.out.println(string.charAt(i));
+                isGood = false;
+            }
+        }
+        return isGood;
+    }
     public void signUpAction(ActionEvent actionEvent) throws IOException {
         String username = usernameSignUpField.getText();
         String password = passwordSignUpField.getText();
         String password2 = passwordSignUpField1.getText();
-        String invalidText = " +=-?().-{}[]~`,<>./*";
+        boolean isValidChars1,isValidChars2,isValidChars3;
+        isValidChars1 = validChars(username);
+        isValidChars2 = validChars(password);
+        isValidChars3 = validChars(password2);
         if(password.length() > 3 && username.length() > 3){
-            if(username.contains(invalidText)||password.contains(invalidText)||password2.contains(invalidText))
-            {
-                signUpErrorLabel.setText("Invalid character in Login.");
+            if(!isValidChars1||!isValidChars2||!isValidChars3) {
+                signUpErrorLabel.setStyle("-fx-font-size: 12px");
+                signUpErrorLabel.setText("No special characters.");
+                usernameSignUpField.setStyle("-fx-border-color: red");
+                passwordSignUpField.setStyle("-fx-border-color: red");
+                passwordSignUpField1.setStyle("-fx-border-color: red");
             }
             else {
                 if (password.equals(password2)) {//Passwords match and login is longer than 3 chars
-                    Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreenVaccination.fxml"));
-                    stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+                    if (organizationButton.isSelected()) {
+                        Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreenOrg.fxml"));
+                        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
 
-                    //USER SUCCESSFULLY CREATED ACCOUNT SEND TO SERVER.
-                    //SEND TO NEXT SCREEN EMPLOYER or EMPLOYEE
+                        //GO TO ORG SCENE
+                        //SET ACCOUNT TYPE TO ORG
+                    } else if (userButton.isSelected()) {
+                        //NEXT STAGE TO USER SCREEN
+                        //SET TYPE TO USER
+                        Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreenUser.fxml"));
+                        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+
+                    }
 
                 } else {//Passwords do not match but are longer than 3 chars
                     signUpErrorLabel.setStyle("-fx-font-size: 12px");
@@ -95,6 +125,7 @@ public class SignUpController {
     public void setUpBoxes(CheckBox checkBox){
         if(checkBox.isSelected()){
             selectedBoxes.add(checkBox);
+            selectedBox = checkBox;
         }else {
             unselectedBoxes.add(checkBox);
         }
@@ -121,27 +152,8 @@ public class SignUpController {
                 unselectedBoxes.forEach(cb -> cb.setDisable(false));
             }
         });
-    /*
-        UnaryOperator<TextFormatter.Change> numberValidationFormatter = change -> {
-            if (change.getText().matches("\\d+")) {
-                return change; //if change is a number
-            } else {
-                change.setText(""); //else make no change
-                change.setRange( //don't remove any selected text either.
-                        change.getRangeStart(),
-                        change.getRangeStart()
-                );
-                return change;
-            }
-        };
 
 
-        TextFormatter tf = new TextFormatter(numberValidationFormatter);
-
-
-        usernameSignUpField.setTextFormatter(tf);
-
-     */
 
     }
 
