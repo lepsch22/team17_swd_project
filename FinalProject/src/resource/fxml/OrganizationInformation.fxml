@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrganizationInfoController">
+    <center>
+        <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="BackGroundGradient" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="orgIcon" fitHeight="106.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </ImageView>
+                <Label fx:id="orgName" alignment="CENTER" prefHeight="33.0" prefWidth="334.0" styleClass="labelCompanyName" text="Organization Name" />
+                <ScrollPane prefHeight="333.0" prefWidth="260.0">
+                    <content>
+                        <ListView fx:id="listOfCompanies" prefHeight="373.0" prefWidth="329.0" />
+                    </content>
+                    <VBox.margin>
+                        <Insets bottom="15.0" left="25.0" right="25.0" />
+                    </VBox.margin>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </center>
+    <top>
+        <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER" />
+    </top>
+</BorderPane>

@@ -29,7 +29,7 @@ public class Driver extends Application {
 
         //Database.changeStatus("Users","test12");
         // Database.delete("Users");
-        Database.insertUser("2","abcsdf","test22","mctesterson");
+        //Database.insertUser("2","abcsdf","test22","mctesterson");
         //Database.changeStatus("test12");
         Parent root = FXMLLoader.load((getClass().getResource("resource/fxml/StartUpScreen.fxml")));
         Scene scene = new Scene(root);
