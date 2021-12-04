@@ -1,6 +1,7 @@
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -37,10 +39,22 @@ public class UserScreenController {
         stage.show();
     }
 
-    public void searchCompany(KeyEvent keyEvent) {
+    public void searchCompany(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode().equals(KeyCode.ENTER)){
             if(orgNameSearch.getText().equals("SEARCH ALL ORGS TO FIND ORG")){
-                //GO TO ORG PAGE
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationInformation.fxml"));
+                Parent root = loader.load();
+                OrganizationInfoController controller = loader.getController();
+
+
+                //PASS IN THE NAME AND REQUIREMENTS
+
+
+                Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
             }
         }
     }
@@ -66,14 +80,34 @@ public class UserScreenController {
                     "-fx-text-fill: red"
             );
         }
-        listOfCompanies.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+        listOfCompanies.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                System.out.println("You selected the "+ t1 + " item."+ "List selection listener.");
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
+                    if(mouseEvent.getClickCount() == 2){
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationInformation.fxml"));
+                        Parent root = null;
+                        try {
+                            root = loader.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        OrganizationInfoController controller = loader.getController();
+
+
+                        //PASS IN THE NAME AND REQUIREMENTS
+
+
+                        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                        System.out.println("Double clicked");
+                    }
+                }
             }
         });
-
-
 
 
     }
