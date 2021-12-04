@@ -15,7 +15,10 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
     <children>
-        <Pane layoutY="-3.0" prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" />
+        <Pane layoutY="-3.0" prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar">
+         <children>
+            <ImageView fitHeight="41.0" fitWidth="65.0" layoutY="2.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow"/>
+         </children></Pane>
         <VBox alignment="CENTER" layoutY="45.0" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient">
             <children>
                 <ImageView fitHeight="89.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
