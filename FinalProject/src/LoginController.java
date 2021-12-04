@@ -50,12 +50,26 @@ public class LoginController {
         String enteredUsername = usernameSignInField.getText();
         String enteredPassword = passwordSignInField.getText();
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationScreen.fxml"));
+        Parent root = loader.load();
+        OrganizationScreenController controller = loader.getController();
+
+        //ArrayList<String> list = new ArrayList<>();
+        //list.add(usernameSignInField.getText());
+
+        //controller.setInfo(usernameSignInField.getText());
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
 
 
 
         if (Database.checkPassword(enteredUsername,enteredPassword))
         {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
+            /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
             Parent root = loader.load();
             UserScreenController controller = loader.getController();
 
@@ -68,6 +82,8 @@ public class LoginController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+             */
         }
         else
         {

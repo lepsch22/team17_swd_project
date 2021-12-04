@@ -68,13 +68,6 @@ public class UserScreenController {
 
     @FXML
     public void initialize(){
-        /*
-        scroll.prefWidthProperty().bind(listOfCompanies.widthProperty());
-        scroll.prefHeightProperty().bind(listOfCompanies.heightProperty());
-        scroll.setContent(listOfCompanies);
-        scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-
-         */
 
 
         for (int i = 0; i < 1000; i++) { //List of all orgs
