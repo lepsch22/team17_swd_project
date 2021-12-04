@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LoginController {
     /**
@@ -49,16 +50,19 @@ public class LoginController {
         String enteredUsername = usernameSignInField.getText();
         String enteredPassword = passwordSignInField.getText();
 
-        //If username/password is wrong.
-        usernameSignInField.setStyle("-fx-border-color: red");
-        passwordSignInField.setStyle("-fx-border-color: red");
-        loginInfoWrong.setStyle("-fx-font-size: 12px");
+
+
 
         if (Database.checkPassword(enteredUsername,enteredPassword))
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
             Parent root = loader.load();
             UserScreenController controller = loader.getController();
+
+            ArrayList<String> list = new ArrayList<>();
+            list.add(usernameSignInField.getText());
+
+            controller.setInfo(usernameSignInField.getText());
 
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -68,6 +72,9 @@ public class LoginController {
         else
         {
             loginInfoWrong.setText("Login info is incorrect.");
+            usernameSignInField.setStyle("-fx-border-color: red");
+            passwordSignInField.setStyle("-fx-border-color: red");
+            loginInfoWrong.setStyle("-fx-font-size: 12px");
         }
 
     }

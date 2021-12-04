@@ -1,3 +1,6 @@
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UserScreenController {
     public Label firstNameLastName1;
@@ -19,6 +23,11 @@ public class UserScreenController {
     public Label vaccinated;
     public TextField orgNameSearch;
     public ListView listOfCompanies;
+    private String username;
+
+    public void setInfo(String info){
+        username = info;
+    }
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
@@ -35,8 +44,10 @@ public class UserScreenController {
             }
         }
     }
+
     @FXML
     public void initialize(){
+
         for (int i = 0; i < 20; i++) { //List of all orgs
             listOfCompanies.getItems().add("Company"+i);
         }
@@ -55,5 +66,15 @@ public class UserScreenController {
                     "-fx-text-fill: red"
             );
         }
+        listOfCompanies.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                System.out.println("You selected the "+ t1 + " item."+ "List selection listener.");
+            }
+        });
+
+
+
+
     }
 }
