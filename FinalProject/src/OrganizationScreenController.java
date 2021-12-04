@@ -33,5 +33,9 @@ public class OrganizationScreenController {
         requirementsField.setText("sdfffffffksjhfhgkrjehgkrjehgjkrdhgjerg");
         //Send requirements to database
     }
+    @FXML
+    public void initialize(){
+        requirementsField.setText("sdfdsfdsfsdfdsfdsfdsfds");
 
+    }
 }
