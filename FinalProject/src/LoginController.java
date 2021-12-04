@@ -45,7 +45,7 @@ public class LoginController {
      * log in button on Log in screen
      * @param actionEvent button
      */
-    public void loginAction(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
+    public void loginAction(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
         String enteredUsername = usernameSignInField.getText();
         String enteredPassword = passwordSignInField.getText();
 
@@ -56,7 +56,14 @@ public class LoginController {
 
         if (Database.checkPassword(enteredUsername,enteredPassword))
         {
-            //WRITE NEXT PAGE CODE HERE
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
+            Parent root = loader.load();
+            UserScreenController controller = loader.getController();
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
         else
         {

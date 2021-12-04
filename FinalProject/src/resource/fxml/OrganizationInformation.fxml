@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -19,13 +19,13 @@
                     </VBox.margin>
                 </ImageView>
                 <Label fx:id="orgName" alignment="CENTER" prefHeight="33.0" prefWidth="334.0" styleClass="labelCompanyName" text="Organization Name" />
-                <ScrollPane prefHeight="333.0" prefWidth="260.0">
-                    <content>
-                        <ListView fx:id="listOfCompanies" prefHeight="373.0" prefWidth="329.0" />
-                    </content>
+                <ScrollPane prefHeight="445.0" prefWidth="310.0">
                     <VBox.margin>
                         <Insets bottom="15.0" left="25.0" right="25.0" />
                     </VBox.margin>
+               <content>
+                  <TextArea prefHeight="446.0" prefWidth="313.0" />
+               </content>
                 </ScrollPane>
             </children>
         </VBox>
