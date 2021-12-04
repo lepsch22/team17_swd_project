@@ -47,6 +47,9 @@
         </VBox>
     </center>
     <top>
-        <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER" />
+        <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="64.0" layoutY="2.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow" />
+         </children></Pane>
     </top>
 </BorderPane>
