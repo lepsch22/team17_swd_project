@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,6 +57,9 @@ public class SignUpController {
     private Stage stage;
     private Scene scene;
     private CheckBox selectedBox;
+    public void setupError(){
+
+    }
     public boolean validChars(String string){
         String invalidText = " "+"+=-?().-{}[]~`,<>./*%"+'"'+"'";
         boolean isGood = true;
@@ -86,7 +90,16 @@ public class SignUpController {
             else {
                 if (password.equals(password2)) {//Passwords match and login is longer than 3 chars
                     if (organizationButton.isSelected()) {
-                        Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreenOrg.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenOrg.fxml"));
+                        Parent root = loader.load();
+                        SignUpScreenOrgController scene2Controller = loader.getController();
+
+                        ArrayList<String> list =  new ArrayList<>();
+                        list.add(username);
+                        list.add(password);
+
+                        scene2Controller.setInfo(list);
+
                         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
@@ -97,14 +110,16 @@ public class SignUpController {
                     } else if (userButton.isSelected()) {
                         //NEXT STAGE TO USER SCREEN
                         //SET TYPE TO USER
-                        FXMLLoader loader = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/SignUpScreenUser.fxml"));
-                        SignUpScreenUserController newController =  new SignUpScreenUserController();
-                        ArrayList<String> newList = new ArrayList<String>();
-                        newList.add(username);
-                        newList.add(password);
-                        loader.setController(newController);
-                        newController.setInfo(newList);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenUser.fxml"));
                         Parent root = loader.load();
+                        SignUpScreenUserController scene2Controller = loader.getController();
+
+                        ArrayList<String> list =  new ArrayList<>();
+                        list.add(username);
+                        list.add(password);
+
+                        scene2Controller.setInfo(list);
+
                         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);

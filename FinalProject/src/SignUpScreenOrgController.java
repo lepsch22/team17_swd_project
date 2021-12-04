@@ -10,8 +10,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SignUpScreenOrgController {
+    private String username;
+    private String password;
+
+    public void setInfo(ArrayList<String> info){
+        username = info.get(0);
+        password = info.get(1);
+    }
     @FXML
     private Label nameInfoWrong;
     @FXML
@@ -26,6 +34,7 @@ public class SignUpScreenOrgController {
     }
 
     public void signUp(ActionEvent actionEvent) {
+        System.out.println(username);
         String companyNameIn = companyName.getText();
 
         Boolean isGood = true;
