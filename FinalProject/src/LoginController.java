@@ -80,6 +80,19 @@ public class LoginController {
 
         else if(rs.getString("LoginType").equals("Org"))
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationScreen.fxml"));
+            Parent root = loader.load();
+            UserScreenController controller = loader.getController();
+
+            HashMap<String, String> map = new HashMap<>();
+
+
+
+            controller.setInfo(map);
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         }
 
