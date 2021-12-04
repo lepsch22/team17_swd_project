@@ -18,7 +18,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#addImage" styleClass="plainButton" text="Add Image">
+            <Button mnemonicParsing="false" onAction="#addImage" styleClass="plainSmallButton" text="Add Image">
                <VBox.margin>
                   <Insets bottom="25.0" />
                </VBox.margin>
@@ -33,7 +33,7 @@
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </TextArea>
-            <Button mnemonicParsing="false" onAction="#submitRequirements" styleClass="plainButton" text="Submit">
+            <Button mnemonicParsing="false" onAction="#submitRequirements" styleClass="plainSmallButton" text="Submit">
                <VBox.margin>
                   <Insets bottom="15.0" top="10.0" />
                </VBox.margin>
