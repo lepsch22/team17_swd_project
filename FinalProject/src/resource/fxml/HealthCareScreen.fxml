@@ -35,12 +35,12 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
                <children>
-                  <Label text="User Information" GridPane.rowIndex="1">
+                  <Label text="User Information" GridPane.rowIndex="1" styleClass="medLabel">
                      <GridPane.margin>
                         <Insets left="30.0" top="25.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="Company information" GridPane.rowIndex="1">
+                  <Label text="Company information" GridPane.rowIndex="1" styleClass="medLabel">
                      <GridPane.margin>
                         <Insets left="625.0" top="25.0" />
                      </GridPane.margin>
@@ -54,7 +54,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#submitVaccination" prefHeight="16.0" prefWidth="186.0" text="Submit Vaccination">
+                  <Button mnemonicParsing="false" onAction="#submitVaccination" prefHeight="16.0" prefWidth="186.0" text="Submit Vaccination" styleClass="plainSmallButton">
                      <GridPane.margin>
                         <Insets left="520.0" />
                      </GridPane.margin>
@@ -73,12 +73,12 @@
                   <Insets />
                </VBox.margin>
                <children>
-                  <TextArea fx:id="userInformationTextArea" prefHeight="200.0" prefWidth="200.0">
+                  <TextArea fx:id="userInformationTextArea" prefHeight="200.0" prefWidth="200.0" styleClass="textArea">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" />
                      </GridPane.margin>
                   </TextArea>
-                  <TextArea fx:id="companyInformationTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                  <TextArea fx:id="companyInformationTextArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" styleClass="textArea">
                      <GridPane.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" />
                      </GridPane.margin>
@@ -89,12 +89,12 @@
         </VBox>
     </center>
     <top>
-        <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER">
+        <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER" >
             <children>
                 <ImageView fitHeight="44.0" fitWidth="64.0" layoutY="2.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow" />
             </children></Pane>
     </top>
    <left>
-      <Pane prefHeight="672.0" prefWidth="121.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="672.0" prefWidth="121.0" BorderPane.alignment="CENTER" styleClass="Sidebar" />
    </left>
 </BorderPane>
