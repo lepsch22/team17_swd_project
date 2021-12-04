@@ -51,8 +51,8 @@
             <TextField fx:id="passwordSignUpField1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText=" Confirm Password" />
             <GridPane>
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -61,9 +61,9 @@
                   <Insets top="10.0" />
                </VBox.margin>
                <children>
-                  <CheckBox fx:id="organizationButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="136.0" text="Organization">
+                  <CheckBox fx:id="organizationButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="111.0" text="Organization">
                      <GridPane.margin>
-                        <Insets left="65.0" />
+                        <Insets />
                      </GridPane.margin>
                   </CheckBox>
                   <CheckBox fx:id="userButton" mnemonicParsing="false" text="User" GridPane.columnIndex="1">

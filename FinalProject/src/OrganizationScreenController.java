@@ -1,4 +1,5 @@
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import java.io.IOException;
 
 public class OrganizationScreenController {
     public Label orgName;
+
     public TextArea requirementsField;
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {
@@ -28,6 +30,8 @@ public class OrganizationScreenController {
 
     public void submitRequirements(ActionEvent actionEvent) {
         String requirements = requirementsField.getText();
+        requirementsField.setText("sdfffffffksjhfhgkrjehgkrjehgjkrdhgjerg");
         //Send requirements to database
     }
+
 }
