@@ -57,7 +57,10 @@ public class LoginController {
 
         if (Database.checkPassword(enteredUsername,enteredPassword)) {
             ResultSet rs = Database.returnUserInfo(enteredUsername);
-            rs.next();
+            try {
+                rs.next();
+
+
             if (rs.getString("LoginType").equals("User")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
                 Parent root = loader.load();
@@ -78,28 +81,36 @@ public class LoginController {
                 stage.show();
             }
 
-        else if(rs.getString("LoginType").equals("Org"))
-        {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationScreen.fxml"));
-            Parent root = loader.load();
-            UserScreenController controller = loader.getController();
+            else if(rs.getString("LoginType").equals("Org"))
+            {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationScreen.fxml"));
+                Parent root = loader.load();
+                OrganizationScreenController controller = loader.getController();
 
-            HashMap<String, String> map = new HashMap<>();
+                HashMap<String, String> map = new HashMap<>();
 
+               // map.put()
 
+               // controller.setInfo(map);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
 
-            controller.setInfo(map);
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        }
+            }
 
             else if(rs.getString("LoginType").equals("Admin"))
             {
 
             }
+        }
+        catch (NullPointerException e)
+        {
+            loginInfoWrong.setText("Check your syntax");
+            usernameSignInField.setStyle("-fx-border-color: red");
+            passwordSignInField.setStyle("-fx-border-color: red");
+            loginInfoWrong.setStyle("-fx-font-size: 12px");
+        }
         }
         else
         {
