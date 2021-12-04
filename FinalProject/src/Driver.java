@@ -12,9 +12,9 @@ public class Driver extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
-        Database.delete("Users");
-        Database.delete("Organizations");
-        Database.delete("JBCovidSolutions");
+        //Database.delete("Users");
+        //Database.delete("Organizations");
+        //Database.delete("JBCovidSolutions");
 
         //
         // Database.insertHealtCare("benyboo","abcde");

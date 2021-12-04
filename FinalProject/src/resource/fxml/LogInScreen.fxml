@@ -5,18 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
-    <children>
-        <Pane layoutY="-3.0" prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar">
+<BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient" BorderPane.alignment="CENTER" >
          <children>
-            <ImageView fitHeight="41.0" fitWidth="65.0" layoutX="3.0" layoutY="5.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow"/>
-         </children></Pane>
-        <VBox alignment="CENTER" layoutY="45.0" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient">
-            <children>
             <ImageView fitHeight="89.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
                <VBox.margin>
                   <Insets bottom="50.0" />
@@ -32,16 +28,25 @@
                </VBox.margin>
             </Label>
             <TextField fx:id="usernameSignInField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText="Username" />
-                <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Password">
-                    <padding>
-                        <Insets bottom="5.0" top="20.0" />
-                    </padding></Label>
+            <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Password">
+               <padding>
+                  <Insets bottom="5.0" top="20.0" />
+               </padding>
+            </Label>
             <TextField fx:id="passwordSignInField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText="Password" />
-                <Button fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#loginAction" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Log in">
-                    <VBox.margin>
-                        <Insets top="50.0" />
-                    </VBox.margin></Button>
-            </children>
-        </VBox>
-    </children>
-</AnchorPane>
+            <Button fx:id="login" alignment="CENTER" mnemonicParsing="false" onAction="#loginAction" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Log in">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Pane prefHeight="48.0" prefWidth="360.0" styleClass="Sidebar" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="41.0" fitWidth="65.0" layoutX="3.0" layoutY="5.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow" />
+         </children>
+      </Pane>
+   </top>
+</BorderPane>

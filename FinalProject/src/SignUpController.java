@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 
 public class SignUpController {
@@ -96,12 +97,18 @@ public class SignUpController {
                     } else if (userButton.isSelected()) {
                         //NEXT STAGE TO USER SCREEN
                         //SET TYPE TO USER
-                        Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreenUser.fxml"));
+                        FXMLLoader loader = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/SignUpScreenUser.fxml"));
+                        SignUpScreenUserController newController =  new SignUpScreenUserController();
+                        ArrayList<String> newList = new ArrayList<String>();
+                        newList.add(username);
+                        newList.add(password);
+                        loader.setController(newController);
+                        newController.setInfo(newList);
+                        Parent root = loader.load();
                         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                         scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();
-
                     }
 
                 } else {//Passwords do not match but are longer than 3 chars
