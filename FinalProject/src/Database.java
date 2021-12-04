@@ -1,10 +1,8 @@
+import com.mysql.cj.protocol.Resultset;
 import javafx.scene.control.Tab;
 
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class Database {
@@ -60,6 +58,19 @@ public class Database {
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
         statement.executeUpdate("UPDATE Users SET Status = TRUE WHERE  UserName= '"+user+"'");
+    }
+
+    public static boolean checkPassword(String Table,String username,String pwd ) throws SQLException, NoSuchAlgorithmException {
+        final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
+        // Change query
+        System.out.println("");
+        Connection connection = DriverManager.getConnection(
+                DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
+        Statement statement = connection.createStatement();
+        ResultSet rs=statement.executeQuery("SELECT Password FROM "+Table+" WHERE UserName ='"+username+"'");
+        rs.next();
+
+        return rs.getString("Password").equals(Hasher.hash(pwd));
     }
 
 }
