@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -32,7 +33,13 @@ public class OrganizationInfoController {
      */
     @FXML
     private TextArea requirementTextArea;
+    /**
+     * Name of org
+     */
     private String nameOfOrg;
+    /**
+     * Regulations text
+     */
     private String requirementText;
 
     /**
@@ -42,11 +49,16 @@ public class OrganizationInfoController {
      * @throws NoSuchAlgorithmException bad thing happened
      */
     public void setInfo(String nameOfOrg ) throws SQLException, NoSuchAlgorithmException {
-        orgName.setText(nameOfOrg);
-        ResultSet rs = Database.getRegulation(orgName.getText());
+
+        ResultSet rs = Database.getRegulation(nameOfOrg);
         rs.next();
+        orgName.setText(nameOfOrg+", "+rs.getString("Location"));
+
         requirementTextArea.appendText(rs.getString("Regulations"));
         requirementTextArea.setEditable(false);
+
+
+        orgIcon.setImage(new Image(String.valueOf(getClass().getResource("images/"+nameOfOrg+".jpg"))) );
 
     }
 
@@ -62,6 +74,7 @@ public class OrganizationInfoController {
         stage.setScene(scene);
         stage.show();
     }
+
 
 
 }

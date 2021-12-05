@@ -90,6 +90,8 @@ public class LoginController {
 
                     map.put("OrgName", rs.getString("OrgName"));
                     map.put("Regulations", rs.getString("Regulations"));
+                    map.put("Location",rs.getString("Location"));
+                    System.out.println(rs.getString("Location"));
                     if (rs.getBlob("Logo")!=null)
                     {
                         controller.setInfo(map,rs.getBlob("Logo"));

@@ -42,13 +42,13 @@ public class Database {
      * @throws NoSuchAlgorithmException
      * @throws FileNotFoundException
      */
-    public static void insertOrg(String user, String pwd, String name, FileInputStream in) throws SQLException, NoSuchAlgorithmException, FileNotFoundException {
+    public static void insertOrg(String user, String pwd, String name, FileInputStream in,String loc) throws SQLException, NoSuchAlgorithmException, FileNotFoundException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
         System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO Organizations VALUES(?, ?,?,?,?,?)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Organizations VALUES(?,?,?,?,?,?,?)");
         statement.setString(1,name);
         statement.setString(2,"No regulations set");
         statement.setString(3,user);
@@ -56,6 +56,7 @@ public class Database {
         statement.setString(5,"Org");
 
         statement.setBlob(6,in);
+        statement.setString(7,loc);
         statement.execute();}
 
     /**
@@ -298,7 +299,7 @@ public class Database {
         }
         else if(inOrgs(username))
         {
-             rs=statement.executeQuery("SELECT OrgName,Regulations,LoginType,Logo " +
+             rs=statement.executeQuery("SELECT OrgName,Regulations,LoginType,Logo,Location " +
                     "FROM Organizations Where UserName='"+username+"'");
         }
         else if(inAdmin(username))

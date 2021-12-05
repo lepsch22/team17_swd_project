@@ -68,20 +68,22 @@ public class HealthCareScreenUserController {
     /**
      * This variable contains all the user objects for the table
      */
-    private ObservableList<User> userlist = FXCollections.observableArrayList(
-            new User("joey123#","Joe","Biden","Not Vaccinated"),
-            new User("benny123#","Ben","Joe","Vaccinated")
-    );
+    private ObservableList<User> userlist = FXCollections.observableArrayList();
 
     /**
      *  This method changes vaccination status
      * @param actionEvent
      */
-    public void submitVaccination(ActionEvent actionEvent) throws SQLException {
-
+    public void submitVaccination(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
         String username = usernameField.getText();
         //Change vaccination
+
         Database.changeStatus(username);
+        ResultSet rs= Database.getAll("Users");
+        userlist.clear();
+        while (rs.next()) {
+            userlist.add(new User(rs.getString("UserName"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Status")));
+        }
     }
 
 

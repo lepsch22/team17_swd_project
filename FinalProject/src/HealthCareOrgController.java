@@ -18,6 +18,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class HealthCareOrgController {
     public TextField searchUserName;
@@ -49,7 +52,11 @@ public class HealthCareOrgController {
 
     public void searchForUser(KeyEvent keyEvent) {
     }
-    public void initialize(){
+    public void initialize() throws SQLException, NoSuchAlgorithmException {
+        ResultSet rs= Database.getAll("Organizations");
+        while (rs.next()) {
+            orglist.add(new UserOrg(rs.getString("UserName"),rs.getString("OrgName"),rs.getString("Location")));
+        }
         userNameCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("user"));
         orgName.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("orgName"));
         requirementsCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("location"));

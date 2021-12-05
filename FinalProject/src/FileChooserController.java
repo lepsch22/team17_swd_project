@@ -38,7 +38,7 @@ public class FileChooserController{
         String filePath = file.toURI().toURL().toExternalForm();
 
 
-        orgController.setURL(new Image(filePath));
+        orgController.setURL(new Image(filePath),file.getAbsolutePath());
         orgController.companyImage.setImage(new Image(filePath));
 
     }
