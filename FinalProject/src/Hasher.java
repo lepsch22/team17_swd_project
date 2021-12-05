@@ -7,6 +7,12 @@ import java.security.NoSuchAlgorithmException;
  *
  */
 public class Hasher {
+    /**
+     * This method converts a string into a hashed protected password
+     * @param pwd
+     * @return
+     * @throws NoSuchAlgorithmException
+     */
     public static String hash(String pwd) throws NoSuchAlgorithmException {
         MessageDigest SHA512=MessageDigest.getInstance("SHA-512");
 
