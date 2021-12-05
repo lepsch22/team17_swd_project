@@ -19,15 +19,24 @@
                </VBox.margin></ImageView>
             <Button mnemonicParsing="false" onAction="#addImage" styleClass="plainButton" text="Submit Image">
                <VBox.margin>
-                  <Insets bottom="200.0" />
+                  <Insets bottom="150.0" />
                </VBox.margin></Button>
             <Label text="Company Name">
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <Label fx:id="nameInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="243.0" styleClass="errorLabel"/>
-            <TextField fx:id="companyName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText="Company Name" />
+            <Label fx:id="nameInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="243.0" styleClass="errorLabel" />
+            <TextField fx:id="companyName" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText="Company Name">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin></TextField>
+            <Label text="Company Location">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="companyName1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText="Company Location" />
             <Button fx:id="signUp" alignment="CENTER" mnemonicParsing="false" onAction="#signUp" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Sign Up">
                <VBox.margin>
                   <Insets bottom="100.0" top="50.0" />

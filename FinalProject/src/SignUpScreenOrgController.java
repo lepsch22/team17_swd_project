@@ -35,6 +35,7 @@ import java.util.regex.Pattern;
  */
 public class SignUpScreenOrgController {
     public ImageView companyImage;
+    public TextField companyName1;
     /**
      * username passed in
      */
