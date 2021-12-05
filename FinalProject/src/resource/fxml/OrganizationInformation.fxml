@@ -18,7 +18,7 @@
                     </VBox.margin>
                 </ImageView>
                 <Label fx:id="orgName" alignment="CENTER" prefHeight="33.0" prefWidth="334.0" styleClass="labelCompanyName" text="Organization Name" />
-            <TextArea fx:id="requirementTextArea" prefHeight="446.0" prefWidth="313.0" styleClass="textArea">
+            <TextArea fx:id="requirementTextArea" prefHeight="446.0" prefWidth="313.0" styleClass="text-area">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>

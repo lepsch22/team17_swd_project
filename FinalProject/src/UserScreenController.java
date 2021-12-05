@@ -14,7 +14,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -36,16 +38,18 @@ public class UserScreenController {
         firstNameLastName1.setText(info.get("FirstName")+" "+info.get("LastName"));
         if (info.get("Status").equals("FALSE"))
         {
-            vaccinated.setText("Status: Not Vaccinated");
+            vaccinated.setText("Not Vaccinated");
             vaccinated.setStyle(
-                    "-fx-text-fill: red"
+                    "-fx-text-fill: red;"+
+                    "-fx-font-size: 18px"
             );
         }
         else
         {
-            vaccinated.setText("Status: Vaccinated");
+            vaccinated.setText("Vaccinated");
             vaccinated.setStyle(
-                    "-fx-text-fill: #58D68D"
+                    "-fx-text-fill: #58D68D;"+
+                    "-fx-font-size: 18px"
             );
         }
     }
@@ -71,6 +75,7 @@ public class UserScreenController {
 
                 Stage stage = (Stage) ((Node) keyEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
+
                 stage.setScene(scene);
                 stage.show();
 
@@ -117,7 +122,8 @@ public class UserScreenController {
                         //PASS IN THE NAME AND REQUIREMENTS
 
 
-                        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+                        Stage stage = new Stage();
+                        stage =   (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
                         stage.show();

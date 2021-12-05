@@ -51,22 +51,29 @@
 .backArrow{
     -fx-image: url('/images/BackArrow.png');
 }
-.textArea
-{
-    border: 1px solid #b5bcc7;
-    height: 380px;
-    background-color: #F7FCFF;
-    color: Gray;
-    margin-top: 1px;
-    margin-left: 4px;
-    margin-right: 1px;
-    padding: 2px;
-    overflow: auto;
-    -fx-wrap-text: true;
-    -fx-text-fill: #000;
-    -fx-opacity: 1.0;
 
-}
+.list-view{-fx-background-radius: 35px;-fx-background-size: 10px;-fx-background-color: transparent;-fx-border-color:rgba(0,0,0,0.2) ;}
+.list-cell:odd { -fx-background-color: rgba(0,0,0,0.1);-fx-font-size: 14px  }
+.list-cell:even { -fx-background-color: rgba(0,0,0,0.05);-fx-font-size: 14px  }
+.list-cell:selected{-fx-background-color: #58D68D;}
+.list-cell .scroll-bar:vertical,
+.list-cell .scroll-bar:vertical.track {-fx-background-color: transparent;}
+.list-view .scroll-bar:vertical {-fx-background-color:transparent;}
+.list-view .increment-button ,.list-view .decrement-button {-fx-background-color:transparent;-fx-border-color:transparent;}
+.list-view .scroll-bar:vertical .thumb {-fx-background-color:rgba(88,214,141,1);-fx-background-insets: 5, 5, 5;-fx-background-radius: 5;}
+.list-view .scroll-bar:horizontal {-fx-scale-x: 0;}
+
+
+.text-area {overflow: auto;-fx-wrap-text: true;-fx-border-color: rgba(0,0,0,0.6);-fx-background-color: rgba(0,0,0,0.2);-fx-text-fill: white}
+.text-area .content{-fx-background-color: none}
+.text-area .viewport{-fx-background-color: none}
+.text-area .scroll-bar:vertical,
+.text-area .scroll-bar:vertical.track {-fx-background-color: transparent;}
+.text-area .scroll-bar:vertical {-fx-background-color:transparent;}
+.text-area .increment-button ,.list-view .decrement-button {-fx-background-color:transparent;-fx-border-color:transparent;}
+.text-area.scroll-bar:vertical .thumb {-fx-background-color:rgba(88,214,141,1);-fx-background-insets: 5, 5, 5;-fx-background-radius: 5;}
+.text-area .scroll-bar:horizontal {-fx-scale-x: 0;}
+
 .medLabel{
     -fx-font-family: Helvetica;
     -fx-font-size: 14;

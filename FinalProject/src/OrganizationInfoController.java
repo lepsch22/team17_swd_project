@@ -63,4 +63,5 @@ public class OrganizationInfoController {
         stage.show();
     }
 
+
 }
