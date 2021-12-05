@@ -49,9 +49,10 @@ public class OrganizationScreenController {
      * @param info info from previous class
      */
     public void setInfo(HashMap<String,String> info, Blob blob) throws SQLException, IOException {
-       orgName.setText(info.get("OrgName"));
+        //System.out.println(info.get("Location"));
+       orgName.setText(info.get("OrgName")+", "+info.get("Location"));
        requirementsField.setText(info.get("Regulations"));
-       companyLogo.setImage(new Image(String.valueOf(getClass().getResource("images/"+orgName.getText()+".jpg"))) );
+       companyLogo.setImage(new Image(String.valueOf(getClass().getResource("images/"+info.get("OrgName")+".jpg"))) );
 
     }
 

@@ -34,7 +34,13 @@ import java.util.regex.Pattern;
  * Sign up screen for organizations
  */
 public class SignUpScreenOrgController {
+    /**
+     * Company logo
+     */
     public ImageView companyImage;
+    /**
+     * comapany location
+     */
     public TextField companyName1;
     /**
      * username passed in
@@ -87,10 +93,12 @@ public class SignUpScreenOrgController {
     /**
      * This method sets the URL value
      * @param URL
+     * @param Image
      */
-    public void setURL(Image URL)
+    public void setURL(Image Image,String URL)
     {
-        this.companyImage.setImage(URL);
+        this.URL=URL;
+        this.companyImage.setImage(Image);
 
     }
     /**
@@ -111,13 +119,13 @@ public class SignUpScreenOrgController {
             //CREATE COMPANY
             if (Database.isUniqueOrg(companyNameIn))
             {
-                Database.insertOrg(username,password,companyNameIn,new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/Spotify.jpg"));
+                System.out.println(URL+"   dsdfdsfdsfdsfdsfsdfs");
+                Database.insertOrg(username,password,companyNameIn,new FileInputStream(URL),companyName1.getText());
                 ResultSet rs=Database.returnUserInfo(username);
                 rs.next();
                 Blob blob= rs.getBlob("Logo");
                 if (blob!=null)
                 {
-                    System.out.println("gyftdcfvgbhjgvf");
                     byte[] arr=blob.getBytes(1,(int)blob.length());
 
                     FileOutputStream fileOutputStream = new FileOutputStream("FinalProject/src/resource/images/"+companyNameIn+".jpg");

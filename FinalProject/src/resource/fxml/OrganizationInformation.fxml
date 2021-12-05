@@ -12,7 +12,7 @@
     <center>
         <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="BackGroundGradient" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="orgIcon" fitHeight="106.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
+                <ImageView fx:id="orgIcon" fitHeight="106.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" >
                     <VBox.margin>
                         <Insets bottom="10.0" />
                     </VBox.margin>
