@@ -46,6 +46,8 @@ public class OrganizationInfoController {
         ResultSet rs = Database.getRegulation(orgName.getText());
         rs.next();
         requirementTextArea.appendText(rs.getString("Regulations"));
+        requirementTextArea.setEditable(false);
+
     }
 
     /**

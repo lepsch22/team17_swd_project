@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -16,6 +17,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class OrganizationScreenController {
+    @FXML
+    private ImageView companyLogo;
     @FXML
     private Label orgName;
     @FXML

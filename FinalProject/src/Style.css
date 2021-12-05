@@ -63,6 +63,9 @@
     padding: 2px;
     overflow: auto;
     -fx-wrap-text: true;
+    -fx-text-fill: #000;
+    -fx-opacity: 1.0;
+
 }
 .medLabel{
     -fx-font-family: Helvetica;
