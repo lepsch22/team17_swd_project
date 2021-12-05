@@ -89,8 +89,6 @@ public class UserScreenController {
         }
     }
     private ObservableList<UserOrg> orglist = FXCollections.observableArrayList(
-            new UserOrg("McDonalds","Iowa City"),
-            new UserOrg("McDonalds","Iowa City")
     );
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {

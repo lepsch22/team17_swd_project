@@ -9,16 +9,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css"  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpScreenUserController">
+<BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpScreenUserController">
    <center>
       <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fx:id="userImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button mnemonicParsing="false" onAction="#addImage" text="Add Image">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
             <ImageView fitHeight="89.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
                <VBox.margin>
                   <Insets bottom="50.0" />
                </VBox.margin>
             </ImageView>
-            <Label fx:id="nameInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="243.0" styleClass="errorLabel"/>
+            <Label fx:id="nameInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="243.0" styleClass="errorLabel" />
             <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="First Name">
                <padding>
                   <Insets bottom="5.0" />
@@ -34,9 +40,18 @@
                </padding>
             </Label>
             <TextField fx:id="lastNameField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText="Last Name" />
+            <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Location">
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="locationField" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="217.0" promptText="Location" />
             <Button fx:id="signUp" alignment="CENTER" mnemonicParsing="false" onAction="#signUp" prefHeight="34.0" prefWidth="181.0" styleClass="greenButton" text="Sign Up">
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets bottom="15.0" top="50.0" />
                </VBox.margin>
             </Button>
          </children>
