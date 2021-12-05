@@ -94,15 +94,9 @@ public class UserScreenController {
     );
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
-        ResultSet rs=Database.getDatabaseNames();
-        Integer orgCount=Database.count("Organizations");
-        for (int i = 0; i < orgCount; i++) { //List of all orgs
-            if (rs.next())
-            {
-                System.out.println("test");
-                //listOfCompanies.getItems().add(rs.getString("OrgName"));
-            }
-
+        ResultSet rs= Database.getAll("Organizations");
+        while (rs.next()) {
+            orglist.add(new UserOrg(rs.getString("OrgName"),rs.getString("Location")));
         }
         //SET FIRST NAME AND LAST NAME
         companyCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("orgName"));

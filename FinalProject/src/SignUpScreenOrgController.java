@@ -92,12 +92,16 @@ public class SignUpScreenOrgController {
     /**
      * This method sets the URL value
      * @param URL
+     * @param absolutePath
      */
-    public void setURL(Image URL)
+
+    public void setURL(Image Image,String URL)
     {
-        this.companyImage.setImage(URL);
+        this.URL=URL;
+        this.companyImage.setImage(Image);
 
     }
+
     /**
      * This method controls the sign up action
      * @param actionEvent
@@ -117,7 +121,7 @@ public class SignUpScreenOrgController {
             if(matcher2.matches()) {
                 //CREATE COMPANY
                 if (Database.isUniqueOrg(companyNameIn)) {
-                    Database.insertOrg(username, password, companyNameIn, new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/Spotify.jpg"));
+                    Database.insertOrg(username,password,companyNameIn,new FileInputStream(URL),companyName1.getText());
                     ResultSet rs = Database.returnUserInfo(username);
                     rs.next();
                     Blob blob = rs.getBlob("Logo");
