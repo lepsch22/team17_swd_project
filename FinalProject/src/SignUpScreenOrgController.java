@@ -112,7 +112,7 @@ public class SignUpScreenOrgController {
     public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
         String companyNameIn = companyName.getText();
 
-        Boolean isGood = true;
+
         //CharSequence inputStr = expression;
         Pattern pattern = Pattern.compile(new String ("^[a-zA-Z\\s]*$"));
         Matcher matcher = pattern.matcher(companyNameIn);
