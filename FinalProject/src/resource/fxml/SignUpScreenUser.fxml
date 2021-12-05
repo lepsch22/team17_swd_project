@@ -16,14 +16,9 @@
             <ImageView fx:id="userImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <Button mnemonicParsing="false" onAction="#addImage" text="Add Image">
                <VBox.margin>
-                  <Insets top="15.0" />
+                  <Insets bottom="75.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <ImageView fitHeight="89.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
-               <VBox.margin>
-                  <Insets bottom="50.0" />
-               </VBox.margin>
-            </ImageView>
             <Label fx:id="nameInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="243.0" styleClass="errorLabel" />
             <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="First Name">
                <padding>
