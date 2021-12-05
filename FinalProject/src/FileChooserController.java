@@ -12,9 +12,13 @@ import java.net.MalformedURLException;
 
 public class FileChooserController{
     private SignUpScreenOrgController orgController;
+    private SignUpScreenUserController userController;
 
     public void passClass(SignUpScreenOrgController orgController){
         this.orgController = orgController;
+    }
+    public void passClass(SignUpScreenUserController userController){
+        this.userController = userController;
     }
 
 
@@ -37,9 +41,14 @@ public class FileChooserController{
         }
         String filePath = file.toURI().toURL().toExternalForm();
 
-
-        orgController.setURL(new Image(filePath),file.getAbsolutePath());
-        orgController.companyImage.setImage(new Image(filePath));
+        if(orgController != null) {
+            orgController.setURL(new Image(filePath), file.getAbsolutePath());
+            orgController.companyImage.setImage(new Image(filePath));
+        }
+        else{
+            userController.setURL(new Image(filePath), file.getAbsolutePath());
+            userController.userImage.setImage(new Image(filePath));
+        }
 
     }
 
