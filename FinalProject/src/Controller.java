@@ -18,10 +18,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Startup screen controller
+ */
 public class Controller{
 
-
+    /**
+     * stage used for change
+     */
     private Stage stage;
+    /**
+     * scene used for change
+     */
     private Scene scene;
 
 

@@ -23,6 +23,11 @@ public class SignUpScreenUserController {
         password = info.get(1);
     }
 
+    public void setupError(String errorMessage){
+        nameInfoWrong.setText(errorMessage);
+        firstNameField.setStyle("-fx-border-color: red");
+        lastNameField.setStyle("-fx-border-color: red");
+    }
 
 
     @FXML
@@ -69,7 +74,7 @@ public class SignUpScreenUserController {
             stage.show();
 
         }else{
-            nameInfoWrong.setText("Only alphabetical characters are allowed.");
+            setupError("Only alphabetical characters are allowed.");
         }
 
     }

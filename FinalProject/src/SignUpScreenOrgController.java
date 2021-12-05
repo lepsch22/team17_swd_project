@@ -53,6 +53,11 @@ public class SignUpScreenOrgController {
         username = info.get(0);
         password = info.get(1);
     }
+    public void setupError(String errorMessage){
+        nameInfoWrong.setText(errorMessage);
+        companyName.setStyle("-fx-border-color: red");
+        companyName1.setStyle("-fx-border-color: red");
+    }
 
     /**
      * This is the image URL
@@ -107,41 +112,47 @@ public class SignUpScreenOrgController {
         //CharSequence inputStr = expression;
         Pattern pattern = Pattern.compile(new String ("^[a-zA-Z\\s]*$"));
         Matcher matcher = pattern.matcher(companyNameIn);
+        Matcher matcher2 = pattern.matcher(companyName1.getText());
         if(matcher.matches()&& companyImage.getImage() != null){
-            //CREATE COMPANY
-            if (Database.isUniqueOrg(companyNameIn))
-            {
-                Database.insertOrg(username,password,companyNameIn,new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/Spotify.jpg"));
-                ResultSet rs=Database.returnUserInfo(username);
-                rs.next();
-                Blob blob= rs.getBlob("Logo");
-                if (blob!=null)
-                {
-                    System.out.println("gyftdcfvgbhjgvf");
-                    byte[] arr=blob.getBytes(1,(int)blob.length());
+            if(matcher2.matches()) {
+                //CREATE COMPANY
+                if (Database.isUniqueOrg(companyNameIn)) {
+                    Database.insertOrg(username, password, companyNameIn, new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/Spotify.jpg"));
+                    ResultSet rs = Database.returnUserInfo(username);
+                    rs.next();
+                    Blob blob = rs.getBlob("Logo");
+                    if (blob != null) {
+                        System.out.println("gyftdcfvgbhjgvf");
+                        byte[] arr = blob.getBytes(1, (int) blob.length());
 
-                    FileOutputStream fileOutputStream = new FileOutputStream("FinalProject/src/resource/images/"+companyNameIn+".jpg");
+                        FileOutputStream fileOutputStream = new FileOutputStream("FinalProject/src/resource/images/" + companyNameIn + ".jpg");
 
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setHeaderText("Shutting down app");
-                    alert.setContentText("App needs a restart to apply image.");
-                    alert.initModality(Modality.APPLICATION_MODAL);
-                    alert.showAndWait();
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Warning");
+                        alert.setHeaderText("Shutting down app");
+                        alert.setContentText("App needs a restart to apply image.");
+                        alert.initModality(Modality.APPLICATION_MODAL);
+                        alert.showAndWait();
 
-                    fileOutputStream.write(arr);
-                    fileOutputStream.close();
-                    System.exit(0);
+                        fileOutputStream.write(arr);
+                        fileOutputStream.close();
+                        System.exit(0);
+                    }
+                    // Database.insertOrg(username,password,companyNameIn);
+                } else {
+                    setupError("This name is already taken");
                 }
-                // Database.insertOrg(username,password,companyNameIn);
             }
-            else
-            {
-                nameInfoWrong.setText("This name is already taken");
+            else {//Valid location
+                setupError("Enter a valid location.");
+
             }
-        }else{
-            nameInfoWrong.setText("Invalid syntax/Add image");
+
         }
+        else{
+            setupError("Invalid syntax/Add image");
+        }
+
 
     }
 
