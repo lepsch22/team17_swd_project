@@ -130,3 +130,16 @@
     -fx-opacity: 0;
     -fx-padding: 2;
 }
+
+.switchView{
+    -fx-background-color: #E2E2E2;
+    -fx-background-radius: 0;
+    -fx-font-family: Helvetica;
+    -fx-font-size: 14;
+}
+
+.vaccinateLabel{
+    -fx-font-family: Helvetica;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}

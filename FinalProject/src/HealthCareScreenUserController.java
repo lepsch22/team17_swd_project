@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class HealthCareScreenController {
+public class HealthCareScreenUserController {
     /**
      * Full name of workr
      */
@@ -179,7 +179,7 @@ public class HealthCareScreenController {
      * @throws IOException
      */
     public void switchToOrgView(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/HealthCareScreenOrg.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -104,7 +104,7 @@ public class LoginController {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HealthCareScreenUser.fxml"));
                     Parent root = loader.load();
                     System.out.println("Here");
-                    HealthCareScreenController controller = loader.getController();
+                    HealthCareScreenUserController controller = loader.getController();
 
 
                     // map.put()
