@@ -7,12 +7,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -29,6 +36,7 @@ public class OrganizationScreenController {
      * @throws IOException Didnt load correctly
      */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
+
         Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -40,9 +48,11 @@ public class OrganizationScreenController {
      * Pass info from previous class
      * @param info info from previous class
      */
-    public void setInfo(HashMap<String,String> info){
+    public void setInfo(HashMap<String,String> info, Blob blob) throws SQLException, IOException {
        orgName.setText(info.get("OrgName"));
        requirementsField.setText(info.get("Regulations"));
+       companyLogo.setImage(new Image(String.valueOf(getClass().getResource("images/"+orgName.getText()+".jpg"))) );
+
     }
 
     /**

@@ -1,6 +1,12 @@
 import com.mysql.cj.protocol.Resultset;
 import javafx.scene.control.Tab;
 
+import java.io.*;
+import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,16 +23,26 @@ public class Database {
         Statement statement = connection.createStatement();
         statement.executeUpdate("INSERT INTO  Users (UserName,Password,FirstName,LastName) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+fName+"','"+lName+"')");
      }
-    public static void insertOrg( String user,String pwd, String name) throws SQLException, NoSuchAlgorithmException {
+    public static void insertOrg(String user, String pwd, String name, FileInputStream in) throws SQLException, NoSuchAlgorithmException, FileNotFoundException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
         System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
-        Statement statement = connection.createStatement();
-        System.out.println("INSERT INTO  Organizations (UserName,Password,OrgName) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+name+"')");
-        statement.executeUpdate("INSERT INTO  Organizations (UserName,Password,OrgName) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+name+"')");
-    }
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO Organizations VALUES(?, ?,?,?,?,?)");
+        statement.setString(1,name);
+        statement.setString(2,"No regulations set");
+        statement.setString(3,user);
+        statement.setString(4,Hasher.hash(pwd));
+        statement.setString(5,"Org");
+
+        // Database.insertHealtCare("Joslin","abcd");
+       // System.out.println(getClass().getResource("images/subway.jpg")+" zcsdsaasd");
+        //getClass().getResource("images/subway.jpg");
+        //FileInputStream fin = new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/src/subway.jpg");
+        //InputStream in = new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/src/resource/images/subway.jpg");
+        statement.setBlob(6,in);
+        statement.execute();}
     public static void insertHealtCare( String user,String pwd) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -195,7 +211,7 @@ public class Database {
         }
         else if(inOrgs(username))
         {
-             rs=statement.executeQuery("SELECT OrgName,Regulations,LoginType " +
+             rs=statement.executeQuery("SELECT OrgName,Regulations,LoginType,Logo " +
                     "FROM Organizations Where UserName='"+username+"'");
         }
         else if(inAdmin(username))
@@ -217,8 +233,7 @@ public class Database {
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
-        ResultSet rs=statement.executeQuery("SELECT OrgName,LoginType,Regulations " +
-                "FROM Organizations Where UserName='"+username+"'");
+        ResultSet rs=statement.executeQuery("SELECT * FROM Organizations Where UserName='"+username+"'");
         return rs;
     }
 

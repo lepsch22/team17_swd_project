@@ -91,8 +91,11 @@ public class LoginController {
 
                     map.put("OrgName", rs.getString("OrgName"));
                     map.put("Regulations", rs.getString("Regulations"));
+                    if (rs.getBlob("Logo")!=null)
+                    {
+                        controller.setInfo(map,rs.getBlob("Logo"));
+                    }
 
-                    controller.setInfo(map);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);

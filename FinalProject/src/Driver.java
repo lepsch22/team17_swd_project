@@ -4,7 +4,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import javax.xml.crypto.Data;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class Driver extends Application {
     public static void main(String[] args) {
@@ -12,15 +16,22 @@ public class Driver extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+      //  getClass().getResource("images/subway.jpg");
        // Database.checkPassword("Organizations","4","ewr");
        // Database.delete("Users");
-       // Database.delete("Organizations");
-       // Database.delete("JBCovidSolutions");
+        //Database.delete("Organizations");
+        //Database.insertUser("Ben22","1234","Ben","Lepsch");
+       // Database.insertUser("Joslin12","1234","Joslin","Some");
+       // Database.insertOrg("monster","1234","Monster",new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/Monster.jpg"));
 
-        //
-        // Database.insertHealtCare("Joslin","abcd");
-//        Database.insertOrg("first11","1234","McDonalds");
-//        Database.insertOrg("second2","1234","BurgerKing");
+        // Database.delete("Organizations");
+       // Database.delete("JBCovidSolutions");
+       // Database.insertOrg("monster","1234","Monster",new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/src/resource/images/monster.jpg"));
+
+       // File file =new File("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/src/subway.jpg");
+       // InputStream in= new FileInputStream("images/subway.jpg");
+       //  Database.insertOrg("arbys","1234","Arbys", (FileInputStream) in);
+        // Database.insertOrg("Spotify","1234","Spotify",new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/src/resource/images/spotify.jpg"));
 //        Database.insertOrg("thir123d","1234","Starbucks");
 //        Database.insertOrg("fourt21h","1234","Steak n Shake");
 //        Database.insertOrg("fift2h","1234","Culvers");

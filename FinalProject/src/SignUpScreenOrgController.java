@@ -6,14 +6,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -79,7 +87,22 @@ public class SignUpScreenOrgController {
             //CREATE COMPANY
             if (Database.isUniqueOrg(companyNameIn))
             {
-                Database.insertOrg(username,password,companyNameIn);
+                Database.insertOrg(username,password,companyNameIn,new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/Spotify.jpg"));
+                ResultSet rs=Database.returnUserInfo(username);
+                rs.next();
+                Blob blob= rs.getBlob("Logo");
+                if (blob!=null)
+                {
+                    System.out.println("gyftdcfvgbhjgvf");
+                    byte[] arr=blob.getBytes(1,(int)blob.length());
+
+                    FileOutputStream fileOutputStream = new FileOutputStream("FinalProject/src/resource/images/"+companyNameIn+".jpg");
+
+                    fileOutputStream.write(arr);
+                    fileOutputStream.close();
+                    System.exit(0);
+                }
+                // Database.insertOrg(username,password,companyNameIn);
                 Parent root = FXMLLoader.load(getClass().getResource("fxml/StartUpScreen.fxml"));
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -96,6 +119,7 @@ public class SignUpScreenOrgController {
 
     }
 
-    public void addImage(ActionEvent actionEvent) {
-    }
-}
+    public void addImage(ActionEvent actionEvent) throws IOException{
+
+
+    }}
