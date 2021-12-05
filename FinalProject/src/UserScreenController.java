@@ -1,15 +1,18 @@
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -31,6 +34,9 @@ public class UserScreenController {
     public Label vaccinated;
     public TextField orgNameSearch;
     public ListView listOfCompanies;
+    public TableColumn companyCol;
+    public TableColumn locationCol;
+    public TableView table;
     private String username;
 
     public void setInfo(HashMap<String,String> info){
@@ -82,7 +88,10 @@ public class UserScreenController {
             }
         }
     }
-
+    private ObservableList<UserOrg> orglist = FXCollections.observableArrayList(
+            new UserOrg("McDonalds","Iowa City"),
+            new UserOrg("McDonalds","Iowa City")
+    );
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
         ResultSet rs=Database.getDatabaseNames();
@@ -90,15 +99,39 @@ public class UserScreenController {
         for (int i = 0; i < orgCount; i++) { //List of all orgs
             if (rs.next())
             {
-                listOfCompanies.getItems().add(rs.getString("OrgName"));
+                System.out.println("test");
+                //listOfCompanies.getItems().add(rs.getString("OrgName"));
             }
+
         }
         //SET FIRST NAME AND LAST NAME
+        companyCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("orgName"));
+        locationCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("location"));
+        //table.setItems(orglist);
+
+        FilteredList<UserOrg> filtered = new FilteredList<UserOrg>(orglist , b -> true);
+
+        orgNameSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtered.setPredicate(user -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (user.getOrgName().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true;
+                }
+                else
+                    return false;
+            });
+        });
+        SortedList<UserOrg> sortedData = new SortedList<>(filtered);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
 
 
 
-
-        listOfCompanies.setOnMouseClicked(new EventHandler<MouseEvent>(){
+        table.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if(mouseEvent.getButton().equals(MouseButton.PRIMARY)){
@@ -133,4 +166,5 @@ public class UserScreenController {
         });
 
     }
+
 }

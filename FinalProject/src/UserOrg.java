@@ -33,6 +33,10 @@ public class UserOrg {
         this.orgName = orgName;
         this.location = location;
     }
+    public UserOrg(String orgName, String location) {
+        this.orgName = orgName;
+        this.location = location;
+    }
 
 
     

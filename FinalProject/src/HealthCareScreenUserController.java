@@ -78,6 +78,7 @@ public class HealthCareScreenUserController {
      * @param actionEvent
      */
     public void submitVaccination(ActionEvent actionEvent) throws SQLException {
+
         String username = usernameField.getText();
         //Change vaccination
         Database.changeStatus(username);

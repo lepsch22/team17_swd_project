@@ -10,7 +10,7 @@
 
 <BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <center>
-      <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="BackGroundGradient" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox" alignment="CENTER" prefHeight="676.0" prefWidth="360.0"  styleClass="animated-gradient" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
                <VBox.margin>

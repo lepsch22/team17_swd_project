@@ -5,6 +5,10 @@
 .BackGroundGradient{
     -fx-background-color: linear-gradient(to top left, #63c2c3,#7c62ba);
 }
+.animated-gradient {
+    -gradient-base: #63c2c3;
+    -fx-background-color:  linear-gradient(to top right, -gradient-base, #7c62ba);
+}
 .LogInGradient{
     -fx-background-color: linear-gradient(to top right, #63c2c3,#7c62ba);
 }

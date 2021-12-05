@@ -1,5 +1,11 @@
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
@@ -13,7 +19,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +32,9 @@ import java.util.ArrayList;
  */
 public class Controller{
 
+    public Button signInButton;
+    public Button signUpButton;
+    public VBox vbox;
     /**
      * stage used for change
      */
@@ -67,9 +79,31 @@ public class Controller{
     }
 
 
-
+    /**
+     * Set animation of the home screen
+     */
     @FXML
     public void initialize(){
+        ObjectProperty<Color> baseColor = new SimpleObjectProperty<>();
+
+        KeyValue keyValue1 = new KeyValue(baseColor, Color.rgb(124, 98, 186));
+        KeyValue keyValue2 = new KeyValue(baseColor, Color.rgb(99, 194, 195));
+        KeyFrame keyFrame1 = new KeyFrame(Duration.ZERO, keyValue1);
+        KeyFrame keyFrame2 = new KeyFrame(Duration.millis(2500), keyValue2);
+        Timeline timeline = new Timeline(keyFrame1, keyFrame2);
+
+        baseColor.addListener((obs, oldColor, newColor) -> {
+            vbox.setStyle(String.format("-gradient-base: #%02x%02x%02x; ",
+                    (int)(newColor.getRed()*255),
+                    (int)(newColor.getGreen()*255),
+                    (int)(newColor.getBlue()*255)));
+        });
+
+
+        timeline.setAutoReverse(true);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
 
     }
 
