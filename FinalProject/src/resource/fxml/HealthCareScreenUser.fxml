@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="860.0" styleClass="BackGroundGradient" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthCareScreenController">
+<BorderPane prefHeight="700.0" prefWidth="860.0" styleClass="BackGroundGradient" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthCareScreenUserController">
     <center>
         <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="BackGroundGradient" BorderPane.alignment="CENTER">
             <children>
@@ -40,17 +40,17 @@
                      <GridPane.margin>
                         <Insets right="85.0" />
                      </GridPane.margin></TextField>
-                  <Label text="Vaccinate User:">
+                  <Label text="Vaccinate User:" styleClass="vaccinateLabel">
                      <GridPane.margin>
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#submitVaccination" prefHeight="16.0" prefWidth="186.0" styleClass="plainSmallButton" text="Submit Vaccination">
+                  <Button mnemonicParsing="false" onAction="#submitVaccination" prefHeight="16.0" prefWidth="186.0" styleClass="switchView" text="Submit Vaccination">
                      <GridPane.margin>
                         <Insets left="400.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#switchToOrgView" text="Switch to Organization View" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#switchToOrgView" text="Switch to Organization View" GridPane.columnIndex="1" styleClass="switchView"/>
                </children>
             </GridPane>
             <TextField fx:id="searchUserName" onKeyPressed="#searchForUser" promptText="Search User Name">
@@ -75,8 +75,8 @@
    <top>
       <Pane prefHeight="37.0" prefWidth="860.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="39.0" fitWidth="68.0" layoutY="-1.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="currentView" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="5.0" prefHeight="27.0" prefWidth="350.0" text="User View">
+            <ImageView fitHeight="39.0" fitWidth="68.0" layoutY="-1.0" onMouseClicked="#backArrow" pickOnBounds="true" preserveRatio="true" styleClass="backArrow"/>
+            <Label fx:id="currentView" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="5.0" prefHeight="27.0" prefWidth="350.0" text="User View" styleClass="labelCompanyName">
                <font>
                   <Font size="19.0" />
                </font>

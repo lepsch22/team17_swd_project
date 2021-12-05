@@ -66,6 +66,7 @@ public class SignUpScreenOrgController {
     @FXML
     private TextField companyName;
 
+
     /**
      * Backarrow to other page
      * @param mouseEvent on click
@@ -79,15 +80,15 @@ public class SignUpScreenOrgController {
         stage.show();
     }
 
+
     /**
      * This method sets the URL value
      * @param URL
      */
-    public void setURL(String URL)
+    public void setURL(Image URL)
     {
-        this.URL=URL;
-        companyImage=new ImageView();
-        companyImage.setImage(new Image(URL));
+        this.companyImage.setImage(URL);
+
     }
     /**
      * This method controls the sign up action
@@ -97,14 +98,13 @@ public class SignUpScreenOrgController {
      * @throws IOException
      */
     public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
-        System.out.println(username);
         String companyNameIn = companyName.getText();
 
         Boolean isGood = true;
         //CharSequence inputStr = expression;
         Pattern pattern = Pattern.compile(new String ("^[a-zA-Z\\s]*$"));
         Matcher matcher = pattern.matcher(companyNameIn);
-        if(matcher.matches()){
+        if(matcher.matches()&& companyImage.getImage() != null){
             //CREATE COMPANY
             if (Database.isUniqueOrg(companyNameIn))
             {
@@ -124,18 +124,13 @@ public class SignUpScreenOrgController {
                     System.exit(0);
                 }
                 // Database.insertOrg(username,password,companyNameIn);
-                Parent root = FXMLLoader.load(getClass().getResource("fxml/StartUpScreen.fxml"));
-                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
             }
             else
             {
                 nameInfoWrong.setText("This name is already taken");
             }
         }else{
-            nameInfoWrong.setText("Only alphabetical characters are allowed.");
+            nameInfoWrong.setText("Invalid syntax/Add image");
         }
 
     }
@@ -146,7 +141,11 @@ public class SignUpScreenOrgController {
      * @throws IOException
      */
     public void addImage(ActionEvent actionEvent) throws IOException{
-        Parent root = FXMLLoader.load((getClass().getResource("resource/fxml/FileChooser.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FileChooser.fxml"));
+        Parent root = loader.load();
+        FileChooserController controller= loader.getController();
+        controller.passClass(this);
+
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);

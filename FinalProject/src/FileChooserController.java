@@ -11,6 +11,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 
 public class FileChooserController{
+    private SignUpScreenOrgController orgController;
+
+    public void passClass(SignUpScreenOrgController orgController){
+        this.orgController = orgController;
+    }
 
 
     public ImageView image;
@@ -32,8 +37,9 @@ public class FileChooserController{
         }
         String filePath = file.toURI().toURL().toExternalForm();
 
-        SignUpScreenOrgController controller =new SignUpScreenOrgController();
-        controller.setURL(filePath);
+
+        orgController.setURL(new Image(filePath));
+        orgController.companyImage.setImage(new Image(filePath));
 
     }
 
