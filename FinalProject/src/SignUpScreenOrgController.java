@@ -120,6 +120,11 @@ public class SignUpScreenOrgController {
     }
 
     public void addImage(ActionEvent actionEvent) throws IOException{
+        Parent root = FXMLLoader.load((getClass().getResource("resource/fxml/FileChooser.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
 
 
     }}
