@@ -58,7 +58,7 @@
                   <Insets left="150.0" right="150.0" />
                </VBox.margin>
             </TextField>
-            <TableView prefHeight="605.0" prefWidth="1280.0">
+            <TableView fx:id="table" prefHeight="605.0" prefWidth="1280.0">
               <columns>
                 <TableColumn fx:id="userNameCol" prefWidth="200.0" text="Username" />
                   <TableColumn fx:id="FirstNameCol" prefWidth="200.0" text="First Name" />

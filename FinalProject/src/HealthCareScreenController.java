@@ -1,13 +1,15 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -23,16 +25,18 @@ public class HealthCareScreenController {
     public TextField usernameField;
     public TextArea userInformationTextArea;
     public TextArea companyInformationTextArea;
-    public TableColumn userNameCol;
-    public TableColumn FirstNameCol;
-    public TableColumn lastNameCol;
-    public TableColumn statusCol;
+    public TableColumn<User,String> userNameCol;
+    public TableColumn<User,String>  FirstNameCol;
+    public TableColumn<User,String>  lastNameCol;
+    public TableColumn<User,String>  statusCol;
     public Label currentView;
+    public TableView table;
 
     public void submitVaccination(ActionEvent actionEvent) {
         String username = usernameField.getText();
         //Change vaccination
     }
+
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {/*
         //HI joslin I am your friend
@@ -73,13 +77,25 @@ public class HealthCareScreenController {
             )+"       "+rs.getString("Status")+"\n";*/
         /*}
         companyInformationTextArea.setText(message);*/
-        userNameCol.setText("Testermctersterson");
-        lastNameCol.setText("Mcdonalds");
-        FirstNameCol.setText("Joe");
-        statusCol.setText("Vaccinated");
 
+        //userNameCol.("Testermctersterson");
+        //lastNameCol.setText("Mcdonalds");
+        //FirstNameCol.setText("Joe");
+        //statusCol.setText("Vaccinated");
 
+        userNameCol.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<User,String>("vaccine"));
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<User,String>("last"));
+        FirstNameCol.setCellValueFactory(new PropertyValueFactory<User,String>("first"));
+        table.setItems(list);
     }
+    public ObservableList<User> list = FXCollections.observableArrayList(
+            new User("joey123#","Joe","Biden","Not Vaccinated"),
+            new User("benny123#","Ben","Joe","Vaccinated")
+    );
+
+
+
 
 
     /**
@@ -96,9 +112,20 @@ public class HealthCareScreenController {
     }
 
     public void searchForUser(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)){
+            //Search for username in database on enter
+
+        }
+
     }
 
-    public void switchToOrgView(ActionEvent actionEvent) {
+    public void switchToOrgView(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
+
 }
 //Ben1 abcd
