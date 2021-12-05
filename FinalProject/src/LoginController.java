@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginController {
@@ -102,7 +101,7 @@ public class LoginController {
                     stage.show();
 
                 } else {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HealthCareScreen.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/HealthCareScreenUser.fxml"));
                     Parent root = loader.load();
                     System.out.println("Here");
                     HealthCareScreenController controller = loader.getController();
