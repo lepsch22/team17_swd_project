@@ -98,6 +98,24 @@ public class Database {
 
         return false;
     }
+    public static boolean inAdmin(String username) throws SQLException, NoSuchAlgorithmException {
+        final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
+        // Change query
+        Connection connection = DriverManager.getConnection(
+                DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
+        Statement statement = connection.createStatement();
+        ResultSet rs=statement.executeQuery("SELECT UserName FROM JBCovidSolutions ");
+        while (!rs.isLast())
+        {
+            rs.next();
+            if(rs.getString("UserName").equals(username))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     public static boolean inUser(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -172,20 +190,23 @@ public class Database {
         ResultSet rs=null;
         if (inUser(username))
         {
-            System.out.println("User");
              rs=statement.executeQuery("SELECT FirstName,LastName,Status,LoginType " +
                     "FROM Users Where UserName='"+username+"'");
         }
         else if(inOrgs(username))
         {
-            System.out.println("Org");
              rs=statement.executeQuery("SELECT OrgName,Regulations,LoginType " +
                     "FROM Organizations Where UserName='"+username+"'");
         }
-        else
+        else if(inAdmin(username))
         {
             rs=statement.executeQuery("SELECT UserName,LoginType " +
-                    "FROM JBCovidSolutions Where UserName='"+username+"'");        }
+                    "FROM JBCovidSolutions Where UserName='"+username+"'");
+        }
+        else // incorrect case sensitivity
+        {
+            return null;
+        }
 
 
         return rs;

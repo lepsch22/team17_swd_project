@@ -24,8 +24,11 @@ public class OrganizationInfoController {
     private String requirementText;
 
 
-    public void setInfo(String nameOfOrg ){
+    public void setInfo(String nameOfOrg ) throws SQLException, NoSuchAlgorithmException {
         orgName.setText(nameOfOrg);
+        ResultSet rs = Database.getRegulation(orgName.getText());
+        rs.next();
+        requirementTextArea.appendText(rs.getString("Regulations"));
     }
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {
@@ -37,9 +40,6 @@ public class OrganizationInfoController {
     }
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
-        ResultSet rs = Database.getRegulation(orgName.getText());
-        rs.next();
-        requirementTextArea.appendText(rs.getString("OrgName"));
 
     }
 
