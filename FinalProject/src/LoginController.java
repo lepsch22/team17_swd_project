@@ -45,15 +45,12 @@ public class LoginController {
     private Label loginInfoWrong;
 
     /**
-     * log in button on Log in screen
+     * log in button on Log in screen, checking to make sure user information is in database.
      * @param actionEvent button
      */
     public void loginAction(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
         String enteredUsername = usernameSignInField.getText();
         String enteredPassword = passwordSignInField.getText();
-
-
-
 
         if (Database.checkPassword(enteredUsername,enteredPassword)) {
             ResultSet rs = Database.returnUserInfo(enteredUsername);
@@ -126,7 +123,11 @@ public class LoginController {
         }
 
     }
-
+    /**
+     * Backarrow to other page
+     * @param mouseEvent on click
+     * @throws IOException Didnt load correctly
+     */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/StartUpScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();

@@ -31,7 +31,11 @@ public class SignUpScreenUserController {
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
-
+    /**
+     * Backarrow to other page
+     * @param mouseEvent on click
+     * @throws IOException Didnt load correctly
+     */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/SignUpScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
@@ -40,7 +44,7 @@ public class SignUpScreenUserController {
         stage.show();
     }
 
-    public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
+    public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
         System.out.println(username);
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
@@ -58,6 +62,12 @@ public class SignUpScreenUserController {
         if(isGood){
             //CREATE ACCOUNT
             Database.insertUser(username,password,firstName,lastName);
+            Parent root = FXMLLoader.load(getClass().getResource("fxml/StartUpScreen.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
         }else{
             nameInfoWrong.setText("Only alphabetical characters are allowed.");
         }

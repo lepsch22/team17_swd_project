@@ -19,7 +19,11 @@ public class OrganizationScreenController {
     public Label orgName;
 
     public TextArea requirementsField;
-
+    /**
+     * Backarrow to other page
+     * @param mouseEvent on click
+     * @throws IOException Didnt load correctly
+     */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
