@@ -1,6 +1,8 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,6 +63,8 @@ public class HealthCareScreenUserController {
      * Table variable
      */
     public TableView table;
+    @FXML
+    private TextField searchUserName;
     /**
      * This variable contains all the user objects for the table
      */
@@ -87,10 +91,13 @@ public class HealthCareScreenUserController {
      */
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
+
         ResultSet rs= Database.getAll("Users");
         while (rs.next()) {
             userlist.add(new User(rs.getString("UserName"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Status")));
         }
+
+
         /*}
         /*
         //HI joslin I am your friend
@@ -141,7 +148,26 @@ public class HealthCareScreenUserController {
         statusCol.setCellValueFactory(new PropertyValueFactory<User,String>("vaccine"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<User,String>("last"));
         FirstNameCol.setCellValueFactory(new PropertyValueFactory<User,String>("first"));
-        table.setItems(userlist);
+
+        FilteredList<User> filtered = new FilteredList<>(userlist , b -> true);
+
+        searchUserName.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtered.setPredicate(user -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (user.getUsername().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true;
+                }
+                else
+                    return false;
+            });
+        });
+        SortedList<User> sortedData = new SortedList<>(filtered);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
     }
 
 

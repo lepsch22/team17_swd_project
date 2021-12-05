@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="860.0" styleClass="BackGroundGradient" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthCareOrgController">
+<BorderPane prefHeight="700.0" prefWidth="880.0" styleClass="BackGroundGradient" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HealthCareOrgController">
     <center>
         <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="BackGroundGradient" BorderPane.alignment="CENTER">
             <children>
@@ -35,9 +35,6 @@
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
-                    <children>
-                        <Button mnemonicParsing="false" onAction="#switchToOrgView" text="Switch to User View" GridPane.columnIndex="1" styleClass="switchView"/>
-                    </children>
                 </GridPane>
                 <TextField fx:id="searchUserName" onKeyPressed="#searchForUser" promptText="Search User Name">
                     <VBox.margin>
@@ -46,9 +43,9 @@
                 </TextField>
                 <TableView fx:id="table" prefHeight="605.0" prefWidth="1280.0">
                     <columns>
-                        <TableColumn fx:id="userNameCol" prefWidth="266.0" text="Username" />
-                        <TableColumn fx:id="orgName" prefWidth="266.0" text="Org Name" />
-                        <TableColumn fx:id="requirementsCol" prefWidth="267.0" text="Requirements" />
+                        <TableColumn fx:id="userNameCol" prefWidth="277.0" text="Username" />
+                        <TableColumn fx:id="orgName" prefWidth="277.0" text="Org Name" />
+                        <TableColumn fx:id="requirementsCol" prefWidth="277.0" text="Requirements" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
@@ -66,6 +63,7 @@
                         <Font size="19.0" />
                     </font>
                 </Label>
+                  <Button layoutX="681.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToOrgView" styleClass="switchView" text="Switch to User View" />
             </children>
         </Pane>
     </top>

@@ -87,6 +87,9 @@
 .table-view {
     -fx-background-color: transparent;
 }
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
 .table-view .column-header-background .filler {
     -fx-background-color: transparent;
 }
@@ -100,7 +103,7 @@
     -fx-padding: 0 0 5px 0;
 }
 .table-view .table-cell{
-    -fx-border-color: transparent;
+    -fx-border-color: none;
     -fx-padding: 2 0 2 10px;
 }
 .table-row-cell:hover {
@@ -123,13 +126,23 @@
 .table-view .virtual-flow .scroll-bar:horizontal,
 .table-view .virtual-flow .scroll-bar:horizontal .track,
 .table-view .virtual-flow .scroll-bar:horizontal .track-background {
-    -fx-background-color: transparent;
+    -fx-background-color: none;
+}
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #63c2c3,#7c62ba);
+}
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #63c2c3,#7c62ba);
 }
 .table-view .virtual-flow .scroll-bar .increment-button,
 .table-view .virtual-flow .scroll-bar .decrement-button {
     -fx-opacity: 0;
     -fx-padding: 2;
 }
+
+
+
+
 
 .switchView{
     -fx-background-color: #E2E2E2;

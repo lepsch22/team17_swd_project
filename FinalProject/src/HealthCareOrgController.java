@@ -1,5 +1,7 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HealthCareOrgController {
+    public TextField searchUserName;
     @FXML
     private TableColumn userNameCol;
     @FXML
@@ -50,7 +54,26 @@ public class HealthCareOrgController {
         orgName.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("orgName"));
         requirementsCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("location"));
 
-        table.setItems(orglist);
+
+        FilteredList<UserOrg> filtered = new FilteredList<UserOrg>(orglist , b -> true);
+
+        searchUserName.textProperty().addListener((observable, oldValue, newValue) -> {
+            filtered.setPredicate(user -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (user.getUser().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true;
+                }
+                else
+                    return false;
+            });
+        });
+        SortedList<UserOrg> sortedData = new SortedList<>(filtered);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
     }
 
     public void backArrow(MouseEvent mouseEvent) throws IOException {
