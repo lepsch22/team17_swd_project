@@ -13,6 +13,8 @@
    <center>
       <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fx:id="companyImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Button mnemonicParsing="false" onAction="#addImage" text="Submit Image" />
             <ImageView fitHeight="89.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
                <VBox.margin>
                   <Insets bottom="50.0" />

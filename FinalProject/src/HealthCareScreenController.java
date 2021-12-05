@@ -5,8 +5,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -21,13 +23,18 @@ public class HealthCareScreenController {
     public TextField usernameField;
     public TextArea userInformationTextArea;
     public TextArea companyInformationTextArea;
+    public TableColumn userNameCol;
+    public TableColumn FirstNameCol;
+    public TableColumn lastNameCol;
+    public TableColumn statusCol;
+    public Label currentView;
 
     public void submitVaccination(ActionEvent actionEvent) {
         String username = usernameField.getText();
         //Change vaccination
     }
     @FXML
-    public void initialize() throws SQLException, NoSuchAlgorithmException {
+    public void initialize() throws SQLException, NoSuchAlgorithmException {/*
         //HI joslin I am your friend
         workerFirstAndLastLabel.setText("Admin Acess");
        // workerFirstAndLastLabel.set
@@ -39,10 +46,11 @@ public class HealthCareScreenController {
         //        "UserName    FirstName    LastName     Status\n";
         while (rs.next())
         {
-            message+=String.format("%20s %30s %25s %30s",rs.getString("UserName"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("LoginType"))+"\n";
+            message+=String.format("%20s %30s %25s %30s",rs.getString("UserName"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("LoginType"))+"\n";*/
                 /*    "     "+rs.getString("UserName")+"          "+rs.getString("FirstName")+"       "+rs.getString("LastName"
             )+"       "+rs.getString("Status")+"\n";*/
-        }
+        /*}
+
         userInformationTextArea.setText(message);
 
         message="";
@@ -60,12 +68,20 @@ public class HealthCareScreenController {
             catch (NullPointerException e)
             {
                 message+=String.format("%10s %20s %20s %40s",rs.getString("UserName"),rs.getString("OrgName"),rs.getString("LoginType"),rs.getString("regulations"))+"\n";
-            }
+            }*/
                 /*    "     "+rs.getString("UserName")+"          "+rs.getString("FirstName")+"       "+rs.getString("LastName"
             )+"       "+rs.getString("Status")+"\n";*/
-        }
-        companyInformationTextArea.setText(message);
+        /*}
+        companyInformationTextArea.setText(message);*/
+        userNameCol.setText("Testermctersterson");
+        lastNameCol.setText("Mcdonalds");
+        FirstNameCol.setText("Joe");
+        statusCol.setText("Vaccinated");
+
+
     }
+
+
     /**
      * Backarrow to other page
      * @param mouseEvent on click
@@ -77,6 +93,12 @@ public class HealthCareScreenController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void searchForUser(KeyEvent keyEvent) {
+    }
+
+    public void switchToOrgView(ActionEvent actionEvent) {
     }
 }
 //Ben1 abcd

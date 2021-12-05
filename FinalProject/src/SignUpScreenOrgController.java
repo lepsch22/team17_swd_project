@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ import java.util.regex.Pattern;
  * Sign up screen for organizations
  */
 public class SignUpScreenOrgController {
+    public ImageView companyImage;
     /**
      * username passed in
      */
@@ -92,5 +94,8 @@ public class SignUpScreenOrgController {
             nameInfoWrong.setText("Only alphabetical characters are allowed.");
         }
 
+    }
+
+    public void addImage(ActionEvent actionEvent) {
     }
 }
