@@ -92,9 +92,7 @@ public class SignUpScreenOrgController {
     /**
      * This method sets the URL value
      * @param URL
-     * @param absolutePath
      */
-
     public void setURL(Image Image,String URL)
     {
         this.URL=URL;
