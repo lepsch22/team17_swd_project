@@ -13,7 +13,15 @@ import java.util.ArrayList;
 
 public class Database {
 
-
+    /**
+     * This method inserts a row in the User table
+     * @param user
+     * @param pwd
+     * @param fName
+     * @param lName
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static void insertUser( String user,String pwd, String fName, String lName) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -23,6 +31,17 @@ public class Database {
         Statement statement = connection.createStatement();
         statement.executeUpdate("INSERT INTO  Users (UserName,Password,FirstName,LastName) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+fName+"','"+lName+"')");
      }
+
+    /**
+     * This method inserts a row in the Organization table
+     * @param user
+     * @param pwd
+     * @param name
+     * @param in
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     * @throws FileNotFoundException
+     */
     public static void insertOrg(String user, String pwd, String name, FileInputStream in) throws SQLException, NoSuchAlgorithmException, FileNotFoundException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -36,13 +55,16 @@ public class Database {
         statement.setString(4,Hasher.hash(pwd));
         statement.setString(5,"Org");
 
-        // Database.insertHealtCare("Joslin","abcd");
-       // System.out.println(getClass().getResource("images/subway.jpg")+" zcsdsaasd");
-        //getClass().getResource("images/subway.jpg");
-        //FileInputStream fin = new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/src/subway.jpg");
-        //InputStream in = new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/src/resource/images/subway.jpg");
         statement.setBlob(6,in);
         statement.execute();}
+
+    /**
+     * This method inserts a row in the Healthcare table
+     * @param user
+     * @param pwd
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static void insertHealtCare( String user,String pwd) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -54,6 +76,11 @@ public class Database {
     }
 
 
+    /**
+     * This method deletes a row of a given table
+     * @param Table
+     * @throws SQLException
+     */
      public static void delete(String Table) throws SQLException {
          {
              final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
@@ -66,6 +93,12 @@ public class Database {
 
 
      }
+
+    /**
+     * This method changes the vaccination status of a user
+     * @param user
+     * @throws SQLException
+     */
     public static void changeStatus( String user) throws SQLException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -75,6 +108,14 @@ public class Database {
         statement.executeUpdate("UPDATE Users SET Status = 'Vaccinated' WHERE  UserName= '"+user+"'");
     }
 
+    /**
+     * This method checks username and password validity
+     * @param username
+     * @param pwd
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static boolean checkPassword(String username,String pwd ) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -96,6 +137,14 @@ public class Database {
         };
         return temp.equals(Hasher.hash(pwd)) || temp2.equals(Hasher.hash(pwd)) || temp3.equals(Hasher.hash(pwd));
     }
+
+    /**
+     *  This method checks if a username is in the Organization table
+     * @param username
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static boolean inOrgs(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -114,6 +163,14 @@ public class Database {
 
         return false;
     }
+
+    /**
+     *  This method checks if a username is in the Admin table
+     * @param username
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static boolean inAdmin(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -132,6 +189,14 @@ public class Database {
 
         return false;
     }
+
+    /**
+     *  This method checks if a username is in the user table
+     * @param username
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static boolean inUser(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -150,6 +215,14 @@ public class Database {
 
         return false;
     }
+
+    /**
+     * This method checks if a username already exists in a table
+     * @param username
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static boolean isUniqueUser(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -179,6 +252,13 @@ public class Database {
         return true;
     }
 
+    /**
+     * This method checks if an Organization already exists in the database
+     * @param Org
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static boolean isUniqueOrg(String Org) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -197,6 +277,13 @@ public class Database {
         return true;
     }
 
+    /**
+     * This method returs info from the table a username is found in
+     * @param username
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static ResultSet returnUserInfo(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -227,6 +314,14 @@ public class Database {
 
         return rs;
     }
+
+    /**
+     * This method returns info from The organazation table with a given username
+     * @param username
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static ResultSet returnOrgInfo(String username) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -237,6 +332,12 @@ public class Database {
         return rs;
     }
 
+    /**
+     * This method returns the organization names from the Organization table
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static ResultSet getDatabaseNames() throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -246,6 +347,14 @@ public class Database {
         ResultSet rs=statement.executeQuery("SELECT OrgName From Organizations");
         return rs;
     }
+
+    /**
+     * This method
+     * @param Table
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
 
     public static int count(String Table) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
@@ -258,6 +367,13 @@ public class Database {
         return Integer.valueOf(rs.getString("counter"));
     }
 
+    /**
+     * This method adds a regulation to the Organization table
+     * @param regulation
+     * @param name
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static void addRegulation(String regulation,String name) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -268,6 +384,14 @@ public class Database {
 
 
     }
+
+    /**
+     * This method returns all info from a given table
+     * @param Table
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static ResultSet getAll(String Table) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
@@ -278,6 +402,13 @@ public class Database {
         return rs;
     }
 
+    /**
+     * This method returns the regulations of a specific Organization
+     * @param name
+     * @return
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     public static ResultSet getRegulation(String name) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query

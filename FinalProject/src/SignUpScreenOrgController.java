@@ -75,6 +75,13 @@ public class SignUpScreenOrgController {
         stage.show();
     }
 
+    /**
+     * This method controls the sign up action
+     * @param actionEvent
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     * @throws IOException
+     */
     public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
         System.out.println(username);
         String companyNameIn = companyName.getText();
@@ -119,6 +126,11 @@ public class SignUpScreenOrgController {
 
     }
 
+    /**
+     * This method adds an image file
+     * @param actionEvent
+     * @throws IOException
+     */
     public void addImage(ActionEvent actionEvent) throws IOException{
 
 

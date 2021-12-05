@@ -20,25 +20,79 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HealthCareScreenController {
+    /**
+     * Full name of workr
+     */
     public Label workerFirstAndLastLabel;
 
+    /**
+     * username text field
+     */
     public TextField usernameField;
+    /**
+     * User info text area
+     */
     public TextArea userInformationTextArea;
+    /**
+     * Company info text area
+     */
     public TextArea companyInformationTextArea;
+    /**
+     * Username column for table
+     */
     public TableColumn<User,String> userNameCol;
+    /**
+     * Full name column for table
+     */
     public TableColumn<User,String>  FirstNameCol;
+    /**
+     * last name column for table
+     */
     public TableColumn<User,String>  lastNameCol;
+    /**
+     *  Status column for table
+     */
     public TableColumn<User,String>  statusCol;
+    /**
+     *   type of view
+     */
     public Label currentView;
+    /**
+     * Table variable
+     */
     public TableView table;
+    /**
+     * This variable contains all the user objects for the table
+     */
+    private ObservableList<User> userlist = FXCollections.observableArrayList(
+            new User("joey123#","Joe","Biden","Not Vaccinated"),
+            new User("benny123#","Ben","Joe","Vaccinated")
+    );
 
-    public void submitVaccination(ActionEvent actionEvent) {
+    /**
+     *  This method changes vaccination status
+     * @param actionEvent
+     */
+    public void submitVaccination(ActionEvent actionEvent) throws SQLException {
         String username = usernameField.getText();
         //Change vaccination
+        Database.changeStatus(username);
     }
 
+
+    /**
+     * This method initializes the Javafx Gui page
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     @FXML
-    public void initialize() throws SQLException, NoSuchAlgorithmException {/*
+    public void initialize() throws SQLException, NoSuchAlgorithmException {
+        ResultSet rs= Database.getAll("Users");
+        while (rs.next()) {
+            userlist.add(new User(rs.getString("UserName"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Status")));
+        }
+        /*}
+        /*
         //HI joslin I am your friend
         workerFirstAndLastLabel.setText("Admin Acess");
        // workerFirstAndLastLabel.set
@@ -87,12 +141,8 @@ public class HealthCareScreenController {
         statusCol.setCellValueFactory(new PropertyValueFactory<User,String>("vaccine"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<User,String>("last"));
         FirstNameCol.setCellValueFactory(new PropertyValueFactory<User,String>("first"));
-        table.setItems(list);
+        table.setItems(userlist);
     }
-    public ObservableList<User> list = FXCollections.observableArrayList(
-            new User("joey123#","Joe","Biden","Not Vaccinated"),
-            new User("benny123#","Ben","Joe","Vaccinated")
-    );
 
 
 
@@ -111,6 +161,10 @@ public class HealthCareScreenController {
         stage.show();
     }
 
+    /**
+     * This method searches for a user
+     * @param keyEvent
+     */
     public void searchForUser(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)){
             //Search for username in database on enter
@@ -119,6 +173,11 @@ public class HealthCareScreenController {
 
     }
 
+    /**
+     * This method switches to organization view
+     * @param actionEvent
+     * @throws IOException
+     */
     public void switchToOrgView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
