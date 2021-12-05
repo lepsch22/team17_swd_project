@@ -11,34 +11,26 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 
-/**
- * Information on organizations is where we will use this.
- */
 public class OrganizationInfoController {
-    @FXML
-    private ImageView orgIcon;
-    @FXML
-    private Label orgName;
-    @FXML
-    private TextArea requirementTextArea;
-
+    public ImageView orgIcon;
+    public Label orgName;
+    public TextArea requirementTextArea;
     private String nameOfOrg;
     private String requirementText;
 
-    /**
-     * setInformation from previous scene
-     * @param nameOfOrg
-     */
-    public void setInfo(String nameOfOrg ){
+
+    public void setInfo(String nameOfOrg ) throws SQLException, NoSuchAlgorithmException {
         orgName.setText(nameOfOrg);
+        ResultSet rs = Database.getRegulation(orgName.getText());
+        rs.next();
+        requirementTextArea.appendText(rs.getString("Regulations"));
     }
-    /**
-     * Backarrow to other page
-     * @param mouseEvent on click
-     * @throws IOException Didnt load correctly
-     */
+
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/UserScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
@@ -46,14 +38,8 @@ public class OrganizationInfoController {
         stage.setScene(scene);
         stage.show();
     }
-
-    /**
-     * when the controller is statur do
-     */
     @FXML
-    public void initialize(){
-        String yourmom = "Heldsf dsf ert erg rsgte ry  ery 54y fdg ertrt4 gewdsg er6y regds grt vdsv rtu ftdv dfhyt hbcv tyj tygfv rtyj uyjnbg fbn uikh jhbf jiu kghf bnytu loiuhhng bfj";
-        requirementTextArea.appendText(yourmom);
+    public void initialize() throws SQLException, NoSuchAlgorithmException {
 
     }
 

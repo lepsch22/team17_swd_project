@@ -106,7 +106,13 @@ public class UserScreenController {
                             e.printStackTrace();
                         }
                         OrganizationInfoController controller = loader.getController();
-                        controller.setInfo((String) listOfCompanies.getSelectionModel().getSelectedItem());
+                        try {
+                            controller.setInfo((String) listOfCompanies.getSelectionModel().getSelectedItem());
+                        } catch (SQLException throwables) {
+                            throwables.printStackTrace();
+                        } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        }
 
                         //PASS IN THE NAME AND REQUIREMENTS
 
