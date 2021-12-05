@@ -69,3 +69,7 @@
     -fx-font-size: 14;
     -fx-text-fill: white;
 }
+.errorLabel{
+    -fx-text-fill: red;
+    -fx-font-size: 12px;
+}

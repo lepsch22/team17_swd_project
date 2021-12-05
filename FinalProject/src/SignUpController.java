@@ -24,6 +24,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 
+/**
+ * Controller for the sign up FXML
+ */
 public class SignUpController {
     /**
      * User button
@@ -52,16 +55,48 @@ public class SignUpController {
      */
     @FXML
     private  TextField passwordSignUpField1;
+    /**
+     * Observable set used to check selected boxes
+     */
     private ObservableSet<CheckBox> selectedBoxes = FXCollections.observableSet();
+    /**
+     * Observable set used to check the unselected boxes
+     */
     private ObservableSet<CheckBox> unselectedBoxes = FXCollections.observableSet();
+    /**
+     * An integer binding to keep truck of number of boxes
+     */
     private IntegerBinding numBoxesSelected = Bindings.size(selectedBoxes);
+    /**
+     * maximum amount of boxes able to be selected
+     */
     private final int maxBoxSelect = 1;
+    /**
+     * stage to switch
+     */
     private Stage stage;
+    /**
+     * Scene to switch
+     */
     private Scene scene;
     private CheckBox selectedBox;
-    public void setupError(){
 
+    /**
+     * Use for styling an error
+     */
+    public void setupError(String errorMessage){
+
+        signUpErrorLabel.setText(errorMessage);
+        usernameSignUpField.setStyle("-fx-border-color: red");
+        passwordSignUpField.setStyle("-fx-border-color: red");
+        passwordSignUpField1.setStyle("-fx-border-color: red");
     }
+
+    /**
+     * Valid chars for username/password
+     * @param string Username/password
+     * @return is the string acceptable
+     */
     public boolean validChars(String string){
         String invalidText = " "+"+=-?().-{}[]~`,<>./*%"+'"'+"'";
         boolean isGood = true;
@@ -73,7 +108,17 @@ public class SignUpController {
         }
         return isGood;
     }
+
+    /**
+     * Checking all requirements for making an account, based off what account they create they will be sent to a different page.
+     * @param actionEvent on button click
+     * @throws IOException If FXML file does not load
+     * @throws SQLException Issue with DQL database
+     * @throws NoSuchAlgorithmException algorithm exception
+     */
     public void signUpAction(ActionEvent actionEvent) throws IOException, SQLException, NoSuchAlgorithmException {
+        setUpBoxes(organizationButton);
+        setUpBoxes(userButton);
         String username = usernameSignUpField.getText();
         String password = passwordSignUpField.getText();
         String password2 = passwordSignUpField1.getText();
@@ -81,18 +126,13 @@ public class SignUpController {
         isValidChars1 = validChars(username);
         isValidChars2 = validChars(password);
         isValidChars3 = validChars(password2);
-        if(password.length() > 3 && username.length() > 3){
-            if(!isValidChars1||!isValidChars2||!isValidChars3) {
-                signUpErrorLabel.setStyle("-fx-font-size: 12px");
-                signUpErrorLabel.setText("No special characters.");
-                usernameSignUpField.setStyle("-fx-border-color: red");
-                passwordSignUpField.setStyle("-fx-border-color: red");
-                passwordSignUpField1.setStyle("-fx-border-color: red");
+        if(password.length() > 3 && username.length() > 3){//Username and password must be larger thn three chars
+            if(!isValidChars1||!isValidChars2||!isValidChars3) {//Make sure all three inputs are valid
+                setupError("No special characters.");
             }
             else {
                 if (password.equals(password2)) {//Passwords match and login is longer than 3 chars
                     if (organizationButton.isSelected()) {
-
                         //If username unique doo this
                         if (Database.isUniqueUser(username)) {
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenOrg.fxml"));
@@ -109,6 +149,8 @@ public class SignUpController {
                             scene = new Scene(root);
                             stage.setScene(scene);
                             stage.show();
+                        }else{
+                            setupError("Username taken.");
                         }
                         //End this
 
@@ -129,26 +171,22 @@ public class SignUpController {
                             scene = new Scene(root);
                             stage.setScene(scene);
                             stage.show();
+                        }else{
+                            setupError("Username taken.");
                         }
                         //End this
+                    } else if(!organizationButton.isSelected() && !userButton.isSelected()){//No box is selected
+                        setupError("Please check an account type.");
                     }
 
                 } else {//Passwords do not match but are longer than 3 chars
-                    signUpErrorLabel.setStyle("-fx-font-size: 12px");
-                    signUpErrorLabel.setText("Passwords do not match.");
-                    usernameSignUpField.setStyle("-fx-border-color: red");
-                    passwordSignUpField.setStyle("-fx-border-color: red");
-                    passwordSignUpField1.setStyle("-fx-border-color: red");
+                    setupError("Passwords do not match.");
                 }
             }
         }
         else{
             //PASSWORD IS NOT LONG ENOUGH
-            signUpErrorLabel.setStyle("-fx-font-size: 12px");
-            signUpErrorLabel.setText("Login credentials must be more than 3 characters.");
-            usernameSignUpField.setStyle("-fx-border-color: red");
-            passwordSignUpField.setStyle("-fx-border-color: red");
-            passwordSignUpField1.setStyle("-fx-border-color: red");
+            setupError("Login credentials must be more than 3 characters.");
         }
     }
     public void setUpBoxes(CheckBox checkBox){
@@ -169,6 +207,10 @@ public class SignUpController {
 
         });
     }
+
+    /**
+     * Set up the check boxes to only allow one selected at a time also add listener for future events.
+     */
     @FXML
     public void initialize(){
         setUpBoxes(organizationButton);

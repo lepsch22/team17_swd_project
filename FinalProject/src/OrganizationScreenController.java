@@ -16,9 +16,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class OrganizationScreenController {
-    public Label orgName;
-
-    public TextArea requirementsField;
+    @FXML
+    private Label orgName;
+    @FXML
+    private TextArea requirementsField;
     /**
      * Backarrow to other page
      * @param mouseEvent on click
@@ -31,20 +32,33 @@ public class OrganizationScreenController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Pass info from previous class
+     * @param info info from previous class
+     */
     public void setInfo(HashMap<String,String> info){
        orgName.setText(info.get("OrgName"));
        requirementsField.setText(info.get("Regulations"));
     }
 
+    /**
+     * Add custom images.
+     * @param actionEvent button click
+     */
     public void addImage(ActionEvent actionEvent) {
     }
 
+    /**
+     * submit the requirements sheet.
+     * @param actionEvent button click
+     * @throws SQLException DQL Error
+     * @throws NoSuchAlgorithmException No such algorithm
+     */
     public void submitRequirements(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
         String requirements = requirementsField.getText();
         Database.addRegulation(requirements,orgName.getText());
 
     }
-    @FXML
-    public void initialize(){
-    }
+
 }

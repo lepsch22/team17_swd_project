@@ -27,8 +27,8 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="signUpErrorLabel" alignment="CENTER" prefHeight="16.0" prefWidth="337.0" />
-            <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Username">
+            <Label fx:id="signUpErrorLabel" alignment="CENTER" prefHeight="16.0" prefWidth="337.0" styleClass="errorLabel"/>
+            <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Username" >
                <padding>
                   <Insets bottom="5.0" />
                </padding>
