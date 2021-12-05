@@ -38,10 +38,11 @@ public class UserScreenController {
     public TableColumn locationCol;
     public TableView table;
     private String username;
-
+    private String userLoc;
     public void setInfo(HashMap<String,String> info){
         username = info.get("UserName");
         firstNameLastName1.setText(info.get("FirstName")+" "+info.get("LastName"));
+        userLoc=info.get("Location");
         if (info.get("Status").equals("FALSE"))
         {
             vaccinated.setText("Not Vaccinated");

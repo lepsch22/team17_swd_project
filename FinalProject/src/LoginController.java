@@ -75,7 +75,7 @@ public class LoginController {
                     map.put("FirstName", rs.getString("FirstName"));
                     map.put("LastName", rs.getString("LastName"));
                     map.put("Status", rs.getString("Status"));
-
+                    map.put("Location",rs.getString("Location"));
                     controller.setInfo(map);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);

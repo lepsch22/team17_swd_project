@@ -84,7 +84,7 @@ public class SignUpScreenUserController {
             if(matcher3.matches()) {
                 if(userImage.getImage() != null) {
                     //CREATE ACCOUNT
-                    Database.insertUser(username, password, firstName, lastName);
+                    Database.insertUser(username, password, firstName, lastName,locationField.getText());
 
 
 

@@ -10,10 +10,12 @@ import java.net.URL;
 import java.util.*;
 
 public class Api {
-    public static void getStats(String[] args) throws IOException {
+    public static HashMap<String,String> getStats(String org, String dest ) throws IOException {
+        org=org.replaceAll("\\s", "");
+        dest=dest.replaceAll("\\s", "");
         String API="AIzaSyCdtZkbyXhmryzqMo1pReEet4BXNDIl14w";
        // https://maps.googleapis.com/maps/api/distancematrix/json?origins=Washington%2C%20DC&destinations=New%20York%20City%2C%20NY&units=imperial&key=AIzaSyCdtZkbyXhmryzqMo1pReEet4BXNDIl14w
-        URL url=new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins=Iowa%2C%20City&destinations=New%20York%20City%2C%20NY&units=imperial&key="+API);
+        URL url=new URL("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+org+"&destinations="+dest+"&units=imperial&key="+API);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         int status = con.getResponseCode();
@@ -29,7 +31,7 @@ public class Api {
 
 
         System.out.println(content);
-        Map map =new HashMap();
+        HashMap<String,String> map =new HashMap();
         String val="";
         int idx=0;
        // List ls= Arrays.asList("destination_addresses","origin_addresses");
@@ -98,6 +100,8 @@ public class Api {
                 break;
             }
         }
+        System.out.println(map);
+        return map;
         }
 
 
