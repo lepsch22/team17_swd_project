@@ -52,6 +52,10 @@ public class SignUpScreenOrgController {
     }
 
     /**
+     * This is the image URL
+     */
+    private String URL;
+    /**
      * error checking
      */
     @FXML
@@ -75,6 +79,16 @@ public class SignUpScreenOrgController {
         stage.show();
     }
 
+    /**
+     * This method sets the URL value
+     * @param URL
+     */
+    public void setURL(String URL)
+    {
+        this.URL=URL;
+        companyImage=new ImageView();
+        companyImage.setImage(new Image(URL));
+    }
     /**
      * This method controls the sign up action
      * @param actionEvent

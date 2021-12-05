@@ -8,13 +8,14 @@ import javafx.stage.Stage;
 
 
 import java.io.File;
+import java.net.MalformedURLException;
 
 public class FileChooserController{
 
 
     public ImageView image;
 
-    public void chooseFile(ActionEvent actionEvent) {
+    public void chooseFile(ActionEvent actionEvent) throws MalformedURLException {
         FileChooser fileChooser = new FileChooser();
 
         // Set extension filter
@@ -27,10 +28,12 @@ public class FileChooserController{
         File file = fileChooser.showOpenDialog(primaryStage);
         if (file != null) {
             System.out.println(file.getPath());
-            image.setImage(new Image(file.getAbsolutePath()));
+            image.setImage(new Image(file.toURI().toURL().toExternalForm()));
         }
-        String filePath = file.getPath();
+        String filePath = file.toURI().toURL().toExternalForm();
 
+        SignUpScreenOrgController controller =new SignUpScreenOrgController();
+        controller.setURL(filePath);
 
     }
 
