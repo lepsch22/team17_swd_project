@@ -19,6 +19,9 @@ public class SignUpScreenUserController {
     @FXML
     private ImageView userImage;
     @FXML
+    /**
+     * Location field
+     */
     private TextField locationField;
     private String username;
     private String password;
@@ -71,7 +74,7 @@ public class SignUpScreenUserController {
         }
         if(isGood){
             //CREATE ACCOUNT
-            Database.insertUser(username,password,firstName,lastName);
+            Database.insertUser(username,password,firstName,lastName,locationField.getText());
             Parent root = FXMLLoader.load(getClass().getResource("fxml/StartUpScreen.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

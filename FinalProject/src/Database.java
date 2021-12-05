@@ -22,14 +22,14 @@ public class Database {
      * @throws SQLException
      * @throws NoSuchAlgorithmException
      */
-    public static void insertUser( String user,String pwd, String fName, String lName) throws SQLException, NoSuchAlgorithmException {
+    public static void insertUser( String user,String pwd, String fName, String lName,String Location) throws SQLException, NoSuchAlgorithmException {
         final String DATABASE_URL = "jdbc:mysql://s-l112.engr.uiowa.edu:3306/swd_db017";
         // Change query
         System.out.println("");
         Connection connection = DriverManager.getConnection(
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
-        statement.executeUpdate("INSERT INTO  Users (UserName,Password,FirstName,LastName) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+fName+"','"+lName+"')");
+        statement.executeUpdate("INSERT INTO  Users (UserName,Password,FirstName,LastName,Location) VALUE ('"+user+"','"+Hasher.hash(pwd)+"','"+fName+"','"+lName+"','"+Location+"')");
      }
 
     /**
@@ -294,7 +294,7 @@ public class Database {
         ResultSet rs=null;
         if (inUser(username))
         {
-             rs=statement.executeQuery("SELECT FirstName,LastName,Status,LoginType " +
+             rs=statement.executeQuery("SELECT FirstName,LastName,Status,LoginType,Location " +
                     "FROM Users Where UserName='"+username+"'");
         }
         else if(inOrgs(username))

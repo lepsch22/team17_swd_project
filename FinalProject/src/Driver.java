@@ -16,12 +16,13 @@ public class Driver extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+        Api.getStats("Iowa City","paris");
       //  getClass().getResource("images/subway.jpg");
        // Database.checkPassword("Organizations","4","ewr");
-       // Database.delete("Users");
+      //  Database.delete("Users");
       //  Database.delete("Organizations");
         //Database.insertUser("Ben22","1234","Ben","Lepsch");
-       // Database.insertUser("Joslin12","1234","Joslin","Some");
+        Database.insertUser("Joslin12","1234","Joslin","Some","New york");
        // Database.insertOrg("monster","1234","Monster",new FileInputStream("/iahome/s/ss/ssome/Desktop/team17_swd/FinalProject/Monster.jpg"),"Chicago");
 
         // Database.delete("Organizations");
