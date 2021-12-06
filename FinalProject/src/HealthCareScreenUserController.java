@@ -96,6 +96,7 @@ public class HealthCareScreenUserController {
     public void initialize() throws SQLException, NoSuchAlgorithmException {
 
         ResultSet rs= Database.getAll("Users");
+        workerFirstAndLastLabel.setText("ADMIN");
         while (rs.next()) {
             userlist.add(new User(rs.getString("UserName"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Status")));
         }

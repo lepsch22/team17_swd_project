@@ -86,6 +86,7 @@ public class HealthCareOrgController {
      * @throws NoSuchAlgorithmException no such
      */
     public void initialize() throws SQLException, NoSuchAlgorithmException {
+
         ResultSet rs= Database.getAll("Organizations");
         while (rs.next()) {
             orglist.add(new UserOrg(rs.getString("UserName"),rs.getString("OrgName"),rs.getString("Location")));
