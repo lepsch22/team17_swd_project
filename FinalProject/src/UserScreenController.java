@@ -30,10 +30,8 @@ import java.util.HashMap;
 
 public class UserScreenController {
     public UserScreenController(){}
+    private HashMap<String,String> map;
 
-    public UserScreenController(String userLoc){
-        this.userLoc = userLoc;
-    }
 
     public Label firstNameLastName1;
 
@@ -45,6 +43,13 @@ public class UserScreenController {
     public TableView table;
     private String username;
     private String userLoc;
+
+
+
+    public UserScreenController(String userLoc,HashMap map){
+        this.map=map;
+        this.userLoc = userLoc;
+    }
     public void setInfo(HashMap<String,String> info){
         username = info.get("UserName");
         firstNameLastName1.setText(info.get("FirstName")+" "+info.get("LastName"));
@@ -100,9 +105,12 @@ public class UserScreenController {
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
         ResultSet rs= Database.getAll("Organizations");
+        setInfo(map);
+
         while (rs.next()) {
             orglist.add(new UserOrg(rs.getString("OrgName"),rs.getString("Location")));
         }
+
         //SET FIRST NAME AND LAST NAME
         companyCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("orgName"));
         locationCol.setCellValueFactory(new PropertyValueFactory<UserOrg,String>("location"));
@@ -148,7 +156,7 @@ public class UserScreenController {
                             OrganizationInfoController controller = loader.getController();
                             UserOrg temp = (UserOrg) table.getSelectionModel().getSelectedItem();
 
-                            controller.setInfo(temp.getOrgName(),userLoc,temp.getLocation());
+                            controller.setInfo(temp.getOrgName(),userLoc,temp.getLocation(),map);
 
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();

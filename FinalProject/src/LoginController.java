@@ -65,18 +65,19 @@ public class LoginController {
 
 
                 if (rs.getString("LoginType").equals("User")) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
-                    UserScreenController controller = new UserScreenController(rs.getString("Location"));
-                    loader.setController(controller);
-                    Parent root = loader.load();
-
-                    HashMap<String, String> map = new HashMap<>();
-
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));                    HashMap<String, String> map = new HashMap<>();
+                    map = new HashMap<>();
                     map.put("UserName", enteredUsername);
                     map.put("FirstName", rs.getString("FirstName"));
                     map.put("LastName", rs.getString("LastName"));
                     map.put("Status", rs.getString("Status"));
                     map.put("Location",rs.getString("Location"));
+                    UserScreenController controller = new UserScreenController(rs.getString("Location"),map);
+                    loader.setController(controller);
+                    Parent root= loader.load();
+
+
+                    ;
                     controller.setInfo(map);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
