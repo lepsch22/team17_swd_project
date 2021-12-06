@@ -35,23 +35,58 @@ public class UserScreenController {
     @FXML
     private HashMap<String,String> map;
 
-
+    //BELOW METHODS HAVE TO BE PUBLIC
+    /**
+     * fistname last name
+     */
     public Label firstNameLastName1;
-
+    /**
+     * Vaccinated status
+     */
     public Label vaccinated;
+    /**
+     * Search name for org
+     */
     public TextField orgNameSearch;
+    /**
+     * companyCol
+     */
     public TableColumn companyCol;
+    /**
+     * locationCol
+     */
     public TableColumn locationCol;
+    /**
+     * Tableview
+     */
     public TableView table;
+    /**
+     * username
+     */
     private String username;
+    /**
+     * location of user
+     */
     private String userLoc;
+    /**
+     * picture Image
+     */
     public ImageView picture;
 
-
+    /**
+     * user screen controller
+     * @param userLoc
+     * @param map
+     */
     public UserScreenController(String userLoc,HashMap map){
         this.map=map;
         this.userLoc = userLoc;
     }
+
+    /**
+     * set info
+     * @param info
+     */
     public void setInfo(HashMap<String,String> info){
         username = info.get("UserName");
 
@@ -75,6 +110,11 @@ public class UserScreenController {
         }
     }
 
+    /**
+     * backArrow
+     * @param mouseEvent mouseevent
+     * @throws IOException eeee
+     */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/LogInScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
@@ -83,6 +123,11 @@ public class UserScreenController {
         stage.show();
     }
 
+    /**
+     * searchcompany
+     * @param keyEvent mouse button
+     * @throws IOException error
+     */
     public void searchCompany(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode().equals(KeyCode.ENTER)){
             if(orgNameSearch.getText().equals("SEARCH ALL ORGS TO FIND ORG")){
@@ -103,8 +148,18 @@ public class UserScreenController {
             }
         }
     }
+
+    /**
+     * list to get values
+     */
     private ObservableList<UserOrg> orglist = FXCollections.observableArrayList(
     );
+
+    /**
+     * run on start
+     * @throws SQLException
+     * @throws NoSuchAlgorithmException
+     */
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
         ResultSet rs= Database.getAll("Organizations");

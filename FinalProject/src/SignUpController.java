@@ -1,5 +1,11 @@
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,7 +22,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -28,6 +37,11 @@ import java.util.function.UnaryOperator;
  * Controller for the sign up FXML
  */
 public class SignUpController {
+    /**
+     * VBOX
+     */
+    @FXML
+    private VBox vbox;
     /**
      * User button
      */
@@ -214,6 +228,25 @@ public class SignUpController {
      */
     @FXML
     public void initialize(){
+        ObjectProperty<Color> baseColor = new SimpleObjectProperty<>();
+
+        KeyValue keyValue1 = new KeyValue(baseColor, Color.rgb(124, 98, 186));
+        KeyValue keyValue2 = new KeyValue(baseColor, Color.rgb(99, 194, 195));
+        KeyFrame keyFrame1 = new KeyFrame(Duration.ZERO, keyValue1);
+        KeyFrame keyFrame2 = new KeyFrame(Duration.millis(2500), keyValue2);
+        Timeline timeline = new Timeline(keyFrame1, keyFrame2);
+
+        baseColor.addListener((obs, oldColor, newColor) -> {
+            vbox.setStyle(String.format("-gradient-base: #%02x%02x%02x; ",
+                    (int)(newColor.getRed()*255),
+                    (int)(newColor.getGreen()*255),
+                    (int)(newColor.getBlue()*255)));
+        });
+        timeline.setAutoReverse(true);
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+
+
         setUpBoxes(organizationButton);
         setUpBoxes(userButton);
         numBoxesSelected.addListener((obs, oldAmount, newAmount) -> {

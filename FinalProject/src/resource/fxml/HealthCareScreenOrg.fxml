@@ -45,7 +45,7 @@
                     <columns>
                         <TableColumn fx:id="userNameCol" prefWidth="277.0" text="Username" />
                         <TableColumn fx:id="orgName" prefWidth="277.0" text="Org Name" />
-                        <TableColumn fx:id="requirementsCol" prefWidth="277.0" text="Requirements" />
+                        <TableColumn fx:id="requirementsCol" prefWidth="277.0" text="Location" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />

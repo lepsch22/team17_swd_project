@@ -1,3 +1,6 @@
+/**
+ * User class used to make User rows in table view
+ */
 public class User {
     private String username;
     private String vaccine;
