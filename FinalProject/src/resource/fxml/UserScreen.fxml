@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="BackGroundGradient" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="106.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
+                <ImageView fitHeight="106.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" >
                     <VBox.margin>
                         <Insets bottom="10.0" />
                     </VBox.margin>
@@ -22,14 +22,9 @@
             <Label fx:id="firstNameLastName1" alignment="CENTER" prefHeight="33.0" prefWidth="334.0" styleClass="labelCompanyName" text="First Name Last Name" />
                 <Label fx:id="vaccinated" alignment="CENTER" prefHeight="23.0" prefWidth="279.0" styleClass="labelCompanyName" text="Vaccinated">
                     <VBox.margin>
-                        <Insets bottom="5.0" />
+                        <Insets bottom="25.0" />
                     </VBox.margin>
                 </Label>
-            <Label fx:id="location" alignment="CENTER" prefHeight="23.0" prefWidth="279.0" styleClass="labelCompanyName" text="Location">
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Label>
                 <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Search Org Name">
                     <padding>
                         <Insets bottom="5.0" />

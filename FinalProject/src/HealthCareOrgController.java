@@ -22,6 +22,9 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * HealthCareOrgController
+ */
 public class HealthCareOrgController {
     /**
      * searchUsername textfield
@@ -76,6 +79,12 @@ public class HealthCareOrgController {
      */
     public void searchForUser(KeyEvent keyEvent) {
     }
+
+    /**
+     * Runs after constructor
+     * @throws SQLException sql exception
+     * @throws NoSuchAlgorithmException no such
+     */
     public void initialize() throws SQLException, NoSuchAlgorithmException {
         ResultSet rs= Database.getAll("Organizations");
         while (rs.next()) {
