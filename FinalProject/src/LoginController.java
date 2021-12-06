@@ -66,8 +66,9 @@ public class LoginController {
 
                 if (rs.getString("LoginType").equals("User")) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
+                    UserScreenController controller = new UserScreenController(rs.getString("Location"));
+                    loader.setController(controller);
                     Parent root = loader.load();
-                    UserScreenController controller = loader.getController();
 
                     HashMap<String, String> map = new HashMap<>();
 

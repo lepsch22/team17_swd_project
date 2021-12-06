@@ -49,9 +49,10 @@ public class OrganizationInfoController {
      * @throws NoSuchAlgorithmException bad thing happened
      */
     public void setInfo(String nameOfOrg, String UserLoc, String OrgLoc ) throws SQLException, NoSuchAlgorithmException, IOException {
-
+        this.userLoc = UserLoc;
         ResultSet rs = Database.getRegulation(nameOfOrg);
         rs.next();
+        System.out.println(UserLoc);
         HashMap ApiVals=API.getStats(UserLoc,OrgLoc);
         System.out.println(ApiVals);
         orgName.setText(nameOfOrg+", "+rs.getString("Location"));
@@ -63,6 +64,7 @@ public class OrganizationInfoController {
         orgIcon.setImage(new Image(String.valueOf(getClass().getResource("images/"+nameOfOrg+".jpg"))) );
 
     }
+    private String userLoc;
 
     /**
      * Go back to previous window
@@ -70,7 +72,10 @@ public class OrganizationInfoController {
      * @throws IOException couldnt load fxml
      */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/UserScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
+        UserScreenController controller = new UserScreenController(userLoc);
+        loader.setController(controller);
+        Parent root = loader.load();
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

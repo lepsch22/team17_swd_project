@@ -29,6 +29,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserScreenController {
+    public UserScreenController(){}
+
+    public UserScreenController(String userLoc){
+        this.userLoc = userLoc;
+    }
+
     public Label firstNameLastName1;
 
     public Label vaccinated;
@@ -124,6 +130,7 @@ public class UserScreenController {
 
 
 
+
         table.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -141,7 +148,7 @@ public class UserScreenController {
                             OrganizationInfoController controller = loader.getController();
                             UserOrg temp = (UserOrg) table.getSelectionModel().getSelectedItem();
 
-                            controller.setInfo(temp.getOrgName(),"Kansas",temp.getLocation());
+                            controller.setInfo(temp.getOrgName(),userLoc,temp.getLocation());
 
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
