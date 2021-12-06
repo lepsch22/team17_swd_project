@@ -77,7 +77,6 @@ public class LoginController {
             else {
                 rs.next();
 
-
                 if (rs.getString("LoginType").equals("User")) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
                     HashMap<String, String> map = new HashMap<>();
@@ -96,7 +95,8 @@ public class LoginController {
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
-                } else if (rs.getString("LoginType").equals("Org")) {
+                }
+                else if (rs.getString("LoginType").equals("Org")) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OrganizationScreen.fxml"));
                     Parent root = loader.load();
                     OrganizationScreenController controller = loader.getController();

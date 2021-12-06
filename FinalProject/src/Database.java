@@ -153,6 +153,8 @@ public class Database {
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
         ResultSet rs=statement.executeQuery("SELECT UserName FROM Organizations ");
+
+
         while (!rs.isLast())
         {
             rs.next();
@@ -179,6 +181,7 @@ public class Database {
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
         ResultSet rs=statement.executeQuery("SELECT UserName FROM JBCovidSolutions ");
+
         while (!rs.isLast())
         {
             rs.next();
@@ -187,6 +190,7 @@ public class Database {
                 return true;
             }
         }
+
 
         return false;
     }
@@ -205,6 +209,7 @@ public class Database {
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
         ResultSet rs=statement.executeQuery("SELECT UserName FROM Users ");
+
         while (!rs.isLast())
         {
             rs.next();
@@ -213,6 +218,7 @@ public class Database {
                 return true;
             }
         }
+
 
         return false;
     }
