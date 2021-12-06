@@ -20,11 +20,16 @@
                     </VBox.margin>
                 </ImageView>
             <Label fx:id="firstNameLastName1" alignment="CENTER" prefHeight="33.0" prefWidth="334.0" styleClass="labelCompanyName" text="First Name Last Name" />
-                <Label fx:id="vaccinated" alignment="CENTER" prefHeight="33.0" prefWidth="279.0" styleClass="labelCompanyName" text="Vaccinated">
+                <Label fx:id="vaccinated" alignment="CENTER" prefHeight="23.0" prefWidth="279.0" styleClass="labelCompanyName" text="Vaccinated">
                     <VBox.margin>
-                        <Insets bottom="25.0" />
+                        <Insets bottom="5.0" />
                     </VBox.margin>
                 </Label>
+            <Label fx:id="location" alignment="CENTER" prefHeight="23.0" prefWidth="279.0" styleClass="labelCompanyName" text="Location">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
                 <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Search Org Name">
                     <padding>
                         <Insets bottom="5.0" />
