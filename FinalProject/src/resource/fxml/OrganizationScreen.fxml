@@ -18,7 +18,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </ImageView>
-            <Label fx:id="orgName" alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Org Name">
+            <Label fx:id="orgName" alignment="CENTER" prefHeight="21.0" prefWidth="375.0" styleClass="medLabel" text="Org Name">
                <padding>
                   <Insets bottom="5.0" />
                </padding>
