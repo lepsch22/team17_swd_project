@@ -13,8 +13,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Blob;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -75,50 +79,50 @@ public class SignUpScreenUserController {
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
 
-        Pattern pattern = Pattern.compile(new String ("^[a-zA-Z\\s]*$"));
+        Pattern pattern = Pattern.compile(new String("^[a-zA-Z\\s]*$"));
         Matcher matcher = pattern.matcher(firstName);
         Matcher matcher2 = pattern.matcher(lastName);
         Matcher matcher3 = pattern.matcher(locationField.getText());
 
-        if(matcher.matches() && matcher2.matches()){
-            if(matcher3.matches()) {
-                if(userImage.getImage() != null) {
+        if (matcher.matches() && matcher2.matches()) {
+            if (matcher3.matches()) {
+                if (userImage.getImage() != null) {
                     //CREATE ACCOUNT
-                    Database.insertUser(username, password, firstName, lastName,locationField.getText());
+                    if (Database.isUniqueUser(username)) {
+                        Database.insertUser(username, password, firstName, lastName, locationField.getText(), new FileInputStream(URL));
+                        ResultSet rs = Database.returnUserInfo(username);
+                        rs.next();
+                        Blob blob = rs.getBlob("Picture");
+                        if (blob != null) {
+                            System.out.println("gyftdcfvgbhjgvf");
+                            byte[] arr = blob.getBytes(1, (int) blob.length());
 
+                            FileOutputStream fileOutputStream = new FileOutputStream("FinalProject/src/resource/images/" + username + ".jpg");
 
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Warning");
+                            alert.setHeaderText("Shutting down app");
+                            alert.setContentText("App needs a restart to apply image.");
+                            alert.initModality(Modality.APPLICATION_MODAL);
+                            alert.showAndWait();
 
-
-
-
-                    //Insert image to database
-
-
-
-
-
-
-
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Warning");
-                    alert.setHeaderText("Shutting down app");
-                    alert.setContentText("App needs a restart to apply image.");
-                    alert.initModality(Modality.APPLICATION_MODAL);
-                    alert.showAndWait();
-
-                    //fileOutputStream.write(arr);
-                    //fileOutputStream.close();
-                    System.exit(0);
-
+                            fileOutputStream.write(arr);
+                            fileOutputStream.close();
+                            System.exit(0);
+                        }
+                        // Database.insertOrg(username,password,companyNameIn);
+                    } else {
+                        setupError("This name is already taken");
+                    }
                 }
-                else{
-                    setupError("Must select an image.");
-                }
+             else {
+                setupError("Must select an image.");
             }
-            else{
+        } else {
                 setupError("Invalid location");
             }
-        }else{
+        }
+    else{
             setupError("Only alphabetical characters are allowed.");
         }
 

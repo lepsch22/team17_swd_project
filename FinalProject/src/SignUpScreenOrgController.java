@@ -118,6 +118,7 @@ public class SignUpScreenOrgController {
         if(matcher.matches()&& companyImage.getImage() != null){
             if(matcher2.matches()) {
                 //CREATE COMPANY
+
                 if (Database.isUniqueOrg(companyNameIn)) {
                     Database.insertOrg(username,password,companyNameIn,new FileInputStream(URL),companyName1.getText());
                     ResultSet rs = Database.returnUserInfo(username);

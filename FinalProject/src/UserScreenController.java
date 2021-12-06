@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -43,7 +45,7 @@ public class UserScreenController {
     public TableView table;
     private String username;
     private String userLoc;
-
+    public ImageView picture;
 
 
     public UserScreenController(String userLoc,HashMap map){
@@ -52,6 +54,8 @@ public class UserScreenController {
     }
     public void setInfo(HashMap<String,String> info){
         username = info.get("UserName");
+        picture.setImage(new Image(String.valueOf(getClass().getResource("images/"+username+".jpg"))) );
+
         firstNameLastName1.setText(info.get("FirstName")+" "+info.get("LastName"));
         userLoc=info.get("Location");
         if (info.get("Status").equals("FALSE"))
