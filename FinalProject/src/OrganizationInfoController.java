@@ -1,3 +1,4 @@
+import com.google.protobuf.Api;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -58,20 +59,20 @@ public class OrganizationInfoController {
         rs.next();
         System.out.println(UserLoc);
         HashMap ApiVals=API.getStats(UserLoc,OrgLoc);
-        System.out.println(ApiVals);
         orgName.setText(nameOfOrg+", "+rs.getString("Location"));
+        requirementTextArea.appendText(rs.getString("Regulations")+"\n\n Location Information:");
 
-        requirementTextArea.appendText(rs.getString("Regulations"));
-        requirementTextArea.appendText("\n Distance:\n" +Map.get("distance"));
-        if(Map.get("time")!=null)
+        requirementTextArea.appendText("\n\n You are in :  "+userLoc);
+
+        if(ApiVals.containsKey("time") && ApiVals.containsKey("distance"))
         {
-            requirementTextArea.appendText("\n Around "+Map.get("time")+" by car");
+            requirementTextArea.appendText("\n\n Distance:\n" + ApiVals.get("distance"));
+
+            requirementTextArea.appendText("\n Around "+ApiVals.get("time")+" by car");
         }
         requirementTextArea.setEditable(false);
 
-
         orgIcon.setImage(new Image(String.valueOf(getClass().getResource("images/"+nameOfOrg+".jpg"))) );
-
     }
 
     /**

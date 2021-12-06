@@ -30,6 +30,11 @@ public class OrganizationScreenController {
     private Label orgName;
     @FXML
     private TextArea requirementsField;
+
+    /**
+     * Name of orginization
+     */
+    private String name;
     /**
      * Backarrow to other page
      * @param mouseEvent on click
@@ -49,6 +54,7 @@ public class OrganizationScreenController {
      * @param info info from previous class
      */
     public void setInfo(HashMap<String,String> info, Blob blob) throws SQLException, IOException {
+        name=info.get("OrgName");
         //System.out.println(info.get("Location"));
        orgName.setText(info.get("OrgName")+", "+info.get("Location"));
        requirementsField.setText(info.get("Regulations"));
@@ -71,7 +77,7 @@ public class OrganizationScreenController {
      */
     public void submitRequirements(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException {
         String requirements = requirementsField.getText();
-        Database.addRegulation(requirements,orgName.getText());
+        Database.addRegulation(requirements,name);
 
     }
 
