@@ -154,7 +154,8 @@ public class SignUpController {
                         }
                         //End this
 
-                    } else if (userButton.isSelected()) {
+                    }
+                    else if (userButton.isSelected()) {
                         //If username unique doo this
                         if (Database.isUniqueUser(username)) {
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SignUpScreenUser.fxml"));

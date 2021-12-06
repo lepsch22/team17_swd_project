@@ -231,23 +231,25 @@ public class Database {
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
         ResultSet rs=statement.executeQuery("SELECT UserName FROM Organizations ");
-        while (!rs.isLast())
-        {
-            rs.next();
-            if(rs.getString("UserName").equals(username))
-            {
-                return false;
+        try {
+            while (!rs.isLast()) {
+                rs.next();
+                if (rs.getString("UserName").equals(username)) {
+                    return false;
+                }
+            }
+            ResultSet rs2 = statement.executeQuery("SELECT UserName FROM Users ");
+
+            while (!rs2.isLast()) {
+                rs2.next();
+                if (rs2.getString("UserName").equals(username)) {
+                    return false;
+                }
             }
         }
-        ResultSet rs2=statement.executeQuery("SELECT UserName FROM Users ");
-
-        while (!rs2.isLast())
+        catch (SQLException e)
         {
-            rs2.next();
-            if(rs2.getString("UserName").equals(username))
-            {
-                return false;
-            }
+            return true;
         }
 
         return true;
@@ -267,6 +269,9 @@ public class Database {
                 DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
         Statement statement = connection.createStatement();
         ResultSet rs=statement.executeQuery("SELECT OrgName FROM Organizations ");
+        try {
+
+
         while (!rs.isLast())
         {
             rs.next();
@@ -274,6 +279,11 @@ public class Database {
             {
                 return false;
             }
+        }
+        }
+        catch (SQLException e)
+        {
+            return true;
         }
         return true;
     }

@@ -54,7 +54,6 @@ public class UserScreenController {
     }
     public void setInfo(HashMap<String,String> info){
         username = info.get("UserName");
-        picture.setImage(new Image(String.valueOf(getClass().getResource("images/"+username+".jpg"))) );
 
         firstNameLastName1.setText(info.get("FirstName")+" "+info.get("LastName"));
         userLoc=info.get("Location");
@@ -109,7 +108,12 @@ public class UserScreenController {
     @FXML
     public void initialize() throws SQLException, NoSuchAlgorithmException {
         ResultSet rs= Database.getAll("Organizations");
+
         setInfo(map);
+        System.out.println(map);
+        System.out.println(String.valueOf("images/"+username+".jpg"));
+
+        //picture.setImage(new Image(String.valueOf(getClass().getResource("images/"+map.get("UserName")+".jpg"))) );
 
         while (rs.next()) {
             orglist.add(new UserOrg(rs.getString("OrgName"),rs.getString("Location")));
