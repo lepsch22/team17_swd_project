@@ -12,12 +12,12 @@
     <center>
         <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="BackGroundGradient" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="orgIcon" fitHeight="106.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true" >
+                <ImageView fx:id="orgIcon" fitHeight="106.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
                     <VBox.margin>
                         <Insets bottom="10.0" />
                     </VBox.margin>
                 </ImageView>
-                <Label fx:id="orgName" alignment="CENTER" prefHeight="33.0" prefWidth="334.0" styleClass="labelCompanyName" text="Organization Name" />
+                <Label fx:id="orgName" alignment="CENTER" prefHeight="33.0" prefWidth="359.0" styleClass="labelCompanyName" text="Organization Name" />
             <TextArea fx:id="requirementTextArea" prefHeight="446.0" prefWidth="313.0" styleClass="text-area">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
