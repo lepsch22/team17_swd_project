@@ -100,8 +100,7 @@
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {-fx-background-color:  linear-gradient(to right, #63c2c3,#7c62ba);}
 .table-view .virtual-flow .scroll-bar .increment-button,
 .table-view .virtual-flow .scroll-bar .decrement-button {-fx-opacity: 0;-fx-padding: 2;}
-.table-view .column-header{-fx-alignment: LEFT}
-.table-view .label {-fx-alignment: LEFT;}
+.table-view .column-header{-fx-alignment: CENTER}
 
 
 
