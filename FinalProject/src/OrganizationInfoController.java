@@ -48,10 +48,12 @@ public class OrganizationInfoController {
      * @throws SQLException exception
      * @throws NoSuchAlgorithmException bad thing happened
      */
-    public void setInfo(String nameOfOrg ) throws SQLException, NoSuchAlgorithmException {
+    public void setInfo(String nameOfOrg, String UserLoc, String OrgLoc ) throws SQLException, NoSuchAlgorithmException, IOException {
 
         ResultSet rs = Database.getRegulation(nameOfOrg);
         rs.next();
+        HashMap ApiVals=API.getStats(UserLoc,OrgLoc);
+        System.out.println(ApiVals);
         orgName.setText(nameOfOrg+", "+rs.getString("Location"));
 
         requirementTextArea.appendText(rs.getString("Regulations"));

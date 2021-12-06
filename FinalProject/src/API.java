@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
-public class Api {
+public class API {
     public static HashMap<String,String> getStats(String org, String dest ) throws IOException {
         org=org.replaceAll("\\s", "");
         dest=dest.replaceAll("\\s", "");

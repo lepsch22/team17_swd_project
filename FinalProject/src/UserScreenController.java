@@ -140,10 +140,14 @@ public class UserScreenController {
                         try {
                             OrganizationInfoController controller = loader.getController();
                             UserOrg temp = (UserOrg) table.getSelectionModel().getSelectedItem();
-                            controller.setInfo(temp.getOrgName());
+
+                            controller.setInfo(temp.getOrgName(),"Kansas",temp.getLocation());
+
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         } catch (NoSuchAlgorithmException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
 
