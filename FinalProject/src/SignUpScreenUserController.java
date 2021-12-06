@@ -79,14 +79,14 @@ public class SignUpScreenUserController {
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
 
-        Pattern pattern = Pattern.compile(new String("^[a-zA-Z\\s]*$"));
+        Pattern pattern = Pattern.compile(new String ("^[a-zA-Z\\s]*$"));
         Matcher matcher = pattern.matcher(firstName);
         Matcher matcher2 = pattern.matcher(lastName);
         Matcher matcher3 = pattern.matcher(locationField.getText());
 
-        if (matcher.matches() && matcher2.matches()) {
-            if (matcher3.matches()) {
-                if (userImage.getImage() != null) {
+        if(matcher.matches() && matcher2.matches() && !firstName.equals("") && !lastName.equals("")){
+            if(matcher3.matches() && !locationField.getText().equals("")) {
+                if(userImage.getImage() != null) {
                     //CREATE ACCOUNT
                     if (Database.isUniqueUser(username)) {
                         Database.insertUser(username, password, firstName, lastName, locationField.getText(), new FileInputStream(URL));
