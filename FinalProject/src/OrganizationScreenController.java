@@ -53,7 +53,6 @@ public class OrganizationScreenController {
        orgName.setText(info.get("OrgName")+", "+info.get("Location"));
        requirementsField.setText(info.get("Regulations"));
        companyLogo.setImage(new Image(String.valueOf(getClass().getResource("images/"+info.get("OrgName")+".jpg"))) );
-
     }
 
     /**

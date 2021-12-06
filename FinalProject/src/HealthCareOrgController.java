@@ -23,25 +23,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HealthCareOrgController {
-    public TextField searchUserName;
+    /**
+     * searchUsername textfield
+     */
+    @FXML
+    private TextField searchUserName;
+    /**
+     * Table col
+     */
     @FXML
     private TableColumn userNameCol;
+    /**
+     * Table col
+     */
     @FXML
     private TableColumn orgName;
+    /**
+     * Table col
+     */
     @FXML
     private TableColumn requirementsCol;
-    @FXML
-    private Label currentView;
+    /**
+     * table view
+     */
     @FXML
     private TableView table;
+    /**
+     * Used to set col in table
+     */
     private ObservableList<UserOrg> orglist = FXCollections.observableArrayList(
-            new UserOrg("mcdonaldsorgusername","McDonalds","Iowa City"),
-            new UserOrg("mcdonaldsorgusername","McDonalds","Iowa City")
     );
 
     public void submitVaccination(ActionEvent actionEvent) {
     }
 
+    /**
+     * switch to to the org view
+     * @param actionEvent
+     * @throws IOException
+     */
     public void switchToOrgView(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/HealthCareScreenUser.fxml"));
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -50,6 +70,10 @@ public class HealthCareOrgController {
         stage.show();
     }
 
+    /**
+     * searchForUser
+     * @param keyEvent keyEvent
+     */
     public void searchForUser(KeyEvent keyEvent) {
     }
     public void initialize() throws SQLException, NoSuchAlgorithmException {
@@ -83,6 +107,11 @@ public class HealthCareOrgController {
         table.setItems(sortedData);
     }
 
+    /**
+     * backArrow
+     * @param mouseEvent mouse events
+     * @throws IOException mouse events
+     */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/StartUpScreen.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();

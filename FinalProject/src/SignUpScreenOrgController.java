@@ -102,7 +102,7 @@ public class SignUpScreenOrgController {
 
     /**
      * This method controls the sign up action
-     * @param actionEvent
+     * @param actionEvent button click
      * @throws SQLException
      * @throws NoSuchAlgorithmException
      * @throws IOException
