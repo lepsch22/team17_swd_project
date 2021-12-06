@@ -10,13 +10,28 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.net.MalformedURLException;
 
+/**
+ * File Chooser Controller
+ */
 public class FileChooserController{
+    /**
+     * orgController controller to pass info
+     */
     private SignUpScreenOrgController orgController;
+    /**
+     * orgController controller to pass info
+     */
     private SignUpScreenUserController userController;
 
-    public void passClass(SignUpScreenOrgController orgController){
-        this.orgController = orgController;
-    }
+    /**
+     * passClass
+     * @param orgController Controller if
+     */
+    public void passClass(SignUpScreenOrgController orgController){ this.orgController = orgController; }
+    /**
+     *  passclass
+     * @param userController pass class
+     */
     public void passClass(SignUpScreenUserController userController){
         this.userController = userController;
     }
@@ -24,6 +39,11 @@ public class FileChooserController{
 
     public ImageView image;
 
+    /**
+     * Make the file chooser
+     * @param actionEvent open dfile chooser
+     * @throws MalformedURLException bad URL
+     */
     public void chooseFile(ActionEvent actionEvent) throws MalformedURLException {
         FileChooser fileChooser = new FileChooser();
 

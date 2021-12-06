@@ -27,9 +27,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javafx.scene.control.Label;
 
 public class UserScreenController {
-    public UserScreenController(){}
+    @FXML
     private HashMap<String,String> map;
 
 
@@ -37,7 +38,6 @@ public class UserScreenController {
 
     public Label vaccinated;
     public TextField orgNameSearch;
-    public ListView listOfCompanies;
     public TableColumn companyCol;
     public TableColumn locationCol;
     public TableView table;

@@ -18,11 +18,6 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#addImage" styleClass="plainSmallButton" text="Add Image">
-               <VBox.margin>
-                  <Insets bottom="25.0" />
-               </VBox.margin>
-            </Button>
             <Label fx:id="orgName" alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Org Name">
                <padding>
                   <Insets bottom="5.0" />

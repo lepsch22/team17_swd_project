@@ -18,6 +18,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+/**
+ * Controller for organization info controller
+ */
 public class OrganizationInfoController {
     /**
      * orgIcon image

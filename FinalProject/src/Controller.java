@@ -31,9 +31,20 @@ import java.util.ArrayList;
  * Startup screen controller
  */
 public class Controller{
-
-    public Button signInButton;
+    /**
+     * signInButton
+     */
+    @FXML
+    private Button signInButton;
+    /**
+     * signUpButton
+     */
+    @FXML
     public Button signUpButton;
+    /**
+     * vbox to change animation
+     */
+    @FXML
     public VBox vbox;
     /**
      * stage used for change
