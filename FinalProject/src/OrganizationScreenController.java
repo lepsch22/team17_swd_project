@@ -23,6 +23,9 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+/**
+ * Oragnization Controller
+ */
 public class OrganizationScreenController {
     @FXML
     private ImageView companyLogo;

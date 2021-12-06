@@ -1,3 +1,6 @@
+/**
+ * UserOg to make tables form organization database in table views.
+ */
 public class UserOrg {
     private String userName;
 

@@ -25,18 +25,37 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignUpScreenUserController {
-
+    /**
+     * user sign up image.
+     */
     public ImageView userImage;
+    /**
+     * locationField
+     */
     @FXML
     private TextField locationField;
+    /**
+     * Username
+     */
     private String username;
+    /**
+     * Password
+     */
     private String password;
 
+    /**
+     * seting info
+     * @param info map
+     */
     public void setInfo(ArrayList<String> info){
         username = info.get(0);
         password = info.get(1);
     }
 
+    /**
+     * setuperror
+     * @param errorMessage
+     */
     public void setupError(String errorMessage){
         nameInfoWrong.setText(errorMessage);
         firstNameField.setStyle("-fx-border-color: red");
@@ -74,6 +93,13 @@ public class SignUpScreenUserController {
 
     }
 
+    /**
+     * Signup method button tis passes in a lot of data
+     * @param actionEvent actionevent
+     * @throws SQLException excpetion
+     * @throws NoSuchAlgorithmException algorith exception
+     * @throws IOException io excepetion
+     */
     public void signUp(ActionEvent actionEvent) throws SQLException, NoSuchAlgorithmException, IOException {
         System.out.println(username);
         String firstName = firstNameField.getText();
@@ -128,6 +154,11 @@ public class SignUpScreenUserController {
 
     }
 
+    /**
+     * add the image
+     * @param actionEvent button
+     * @throws IOException error
+     */
     public void addImage(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FileChooser.fxml"));
         Parent root = loader.load();
