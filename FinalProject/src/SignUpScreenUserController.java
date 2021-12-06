@@ -80,8 +80,8 @@ public class SignUpScreenUserController {
         Matcher matcher2 = pattern.matcher(lastName);
         Matcher matcher3 = pattern.matcher(locationField.getText());
 
-        if(matcher.matches() && matcher2.matches()){
-            if(matcher3.matches()) {
+        if(matcher.matches() && matcher2.matches() && !firstName.equals("") && !lastName.equals("")){
+            if(matcher3.matches() && !locationField.getText().equals("")) {
                 if(userImage.getImage() != null) {
                     //CREATE ACCOUNT
                     Database.insertUser(username, password, firstName, lastName,locationField.getText());

@@ -115,8 +115,8 @@ public class SignUpScreenOrgController {
         Pattern pattern = Pattern.compile(new String ("^[a-zA-Z\\s]*$"));
         Matcher matcher = pattern.matcher(companyNameIn);
         Matcher matcher2 = pattern.matcher(companyName1.getText());
-        if(matcher.matches()&& companyImage.getImage() != null){
-            if(matcher2.matches()) {
+        if(matcher.matches()&& companyImage.getImage() != null&& !companyNameIn.equals("")){
+            if(matcher2.matches() && !companyName1.getText().equals("")) {
                 //CREATE COMPANY
                 if (Database.isUniqueOrg(companyNameIn)) {
                     Database.insertOrg(username,password,companyNameIn,new FileInputStream(URL),companyName1.getText());
