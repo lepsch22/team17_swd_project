@@ -19,7 +19,7 @@
                   <Insets bottom="75.0" top="15.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="nameInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="243.0" styleClass="errorLabel" />
+            <Label fx:id="nameInfoWrong" alignment="CENTER" prefHeight="16.0" prefWidth="382.0" styleClass="errorLabel" />
             <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="First Name">
                <padding>
                   <Insets bottom="5.0" />
