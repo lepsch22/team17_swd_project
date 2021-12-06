@@ -89,7 +89,7 @@ public class Database {
              Connection connection = DriverManager.getConnection(
                      DATABASE_URL, "swd_group017", "swd_group017-xyz-21");
              Statement statement = connection.createStatement();
-             statement.executeUpdate("DELETE From "+ Table);
+             statement.executeUpdate("DELETE From "+ Table+" Where Username= 'Wendys'");
      }
 
 

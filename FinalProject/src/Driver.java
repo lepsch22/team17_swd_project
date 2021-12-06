@@ -18,7 +18,6 @@ public class Driver extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        ;
         Parent root = FXMLLoader.load((getClass().getResource("resource/fxml/StartUpScreen.fxml")));
         Scene scene = new Scene(root);
         stage.setScene(scene);
