@@ -62,6 +62,11 @@ public class OrganizationInfoController {
         orgName.setText(nameOfOrg+", "+rs.getString("Location"));
 
         requirementTextArea.appendText(rs.getString("Regulations"));
+        requirementTextArea.appendText("\n Distance:\n" +Map.get("distance"));
+        if(Map.get("time")!=null)
+        {
+            requirementTextArea.appendText("\n Around "+Map.get("time")+" by car");
+        }
         requirementTextArea.setEditable(false);
 
 
