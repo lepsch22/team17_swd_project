@@ -44,16 +44,20 @@ public class OrganizationInfoController {
      * Regulations text
      */
     private String requirementText;
+    private String userLoc;
 
+    private HashMap<String,String> Map;
     /**
      * SetInf from previous controller
      * @param nameOfOrg name of org
+     * @param map
      * @throws SQLException exception
      * @throws NoSuchAlgorithmException bad thing happened
      */
-    public void setInfo(String nameOfOrg, String UserLoc, String OrgLoc ) throws SQLException, NoSuchAlgorithmException, IOException {
+    public void setInfo(String nameOfOrg, String UserLoc, String OrgLoc, HashMap<String, String> map) throws SQLException, NoSuchAlgorithmException, IOException {
         this.userLoc = UserLoc;
         ResultSet rs = Database.getRegulation(nameOfOrg);
+        Map=map;
         rs.next();
         System.out.println(UserLoc);
         HashMap ApiVals=API.getStats(UserLoc,OrgLoc);
@@ -67,7 +71,6 @@ public class OrganizationInfoController {
         orgIcon.setImage(new Image(String.valueOf(getClass().getResource("images/"+nameOfOrg+".jpg"))) );
 
     }
-    private String userLoc;
 
     /**
      * Go back to previous window
@@ -76,7 +79,7 @@ public class OrganizationInfoController {
      */
     public void backArrow(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/UserScreen.fxml"));
-        UserScreenController controller = new UserScreenController(userLoc);
+        UserScreenController controller = new UserScreenController(userLoc,Map);
         loader.setController(controller);
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
