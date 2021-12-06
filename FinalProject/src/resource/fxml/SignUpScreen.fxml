@@ -15,7 +15,7 @@
 
 <BorderPane prefHeight="720.0" prefWidth="360.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
    <center>
-      <VBox alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="LogInGradient" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbox" alignment="CENTER" prefHeight="676.0" prefWidth="360.0" styleClass="animated-gradient" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="89.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" styleClass="Logo">
                <VBox.margin>
@@ -27,8 +27,8 @@
                   <Insets bottom="25.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="signUpErrorLabel" alignment="CENTER" prefHeight="16.0" prefWidth="337.0" styleClass="errorLabel"/>
-            <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Username" >
+            <Label fx:id="signUpErrorLabel" alignment="CENTER" prefHeight="16.0" prefWidth="337.0" styleClass="errorLabel" />
+            <Label alignment="CENTER" prefHeight="16.0" prefWidth="182.0" styleClass="label" text="Username">
                <padding>
                   <Insets bottom="5.0" />
                </padding>
